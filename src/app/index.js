@@ -1,7 +1,6 @@
+import { mapGetters } from 'vuex';
 import Toast from 'primevue/toast';
 import Menubar from 'primevue/menubar';
-
-import { navItems } from './config';
 
 export default {
   components: {
@@ -11,10 +10,41 @@ export default {
 
   data() {
     return {
-      navItems,
+      navItems: [
+        {
+          label: 'Главная',
+          to: '/',
+        },
+        {
+          label: 'Задачи',
+          visible: () => !this.isGuest,
+          items: [
+            {
+              label: 'Мои задачи',
+            },
+            {
+              label: 'Задачи отдела',
+            },
+          ],
+        },
+        {
+          label: 'Настройки',
+          visible: () => !this.isGuest,
+        },
+        {
+          label: 'Войти',
+          to: '/signIn',
+          visible: () => this.isGuest,
+        },
+      ],
     };
   },
 
   computed: {
+    ...mapGetters('user', ['isGuest']),
+  },
+
+  created() {
+    this.$store.dispatch('user/init');
   },
 };
