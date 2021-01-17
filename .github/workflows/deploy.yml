@@ -23,6 +23,9 @@ jobs:
       run: npm i
     - name: Build package
       run: npm run build
+      env:
+        VUE_APP_API_URL: https://kolobok-auth-back.herokuapp.com
+        BASE_URL: /My-auth_front/
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v1
