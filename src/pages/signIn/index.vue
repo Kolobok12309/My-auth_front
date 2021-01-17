@@ -1,5 +1,5 @@
 <template>
-  <Card class="sign-in-form">
+  <Card class="sign-in-form p-mx-auto">
     <template #title>
       Вход
     </template>
@@ -31,10 +31,23 @@
           />
         </div>
 
-        <Button
-          label="Войти"
-          type="submit"
-        />
+        <div class="p-grid">
+          <div class="p-col">
+            <Button
+              label="Войти"
+              type="submit"
+            />
+          </div>
+
+          <div class="p-col">
+            <router-link to="/signUp" class="p-reset">
+              <Button
+                label="Регистрация"
+                class="p-button-outlined p-button-info"
+              />
+            </router-link>
+          </div>
+        </div>
       </form>
     </template>
   </Card>

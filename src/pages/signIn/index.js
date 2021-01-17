@@ -27,13 +27,13 @@ export default {
       const [err] = await flatry(this.signIn({ login, password }));
 
       if (err) {
-        console.error(err);
-        window.err = err;
         this.$toast.add({
           severity: 'error',
-          summary: err.serverError || err.message,
+          summary: err.serverError || 'Ошибка авторизации',
           life: 5000,
         });
+      } else {
+        this.$router.push('/');
       }
     },
   },

@@ -15,11 +15,9 @@
     </template>
   </Menubar>
 
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="app-content p-mt-4">
+    <router-view/>
   </div>
-  <router-view/>
 </template>
 
 <script src="./index.js"></script>
@@ -27,5 +25,4 @@
 <style
   src="./index.styl"
   lang="stylus"
-  scoped
 ></style>
