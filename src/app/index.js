@@ -1,4 +1,4 @@
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import Toast from 'primevue/toast';
 import Menubar from 'primevue/menubar';
 
@@ -36,12 +36,21 @@ export default {
           to: '/signIn',
           visible: () => this.isGuest,
         },
+        {
+          label: 'Выход',
+          command: () => this.quit(),
+          visible: () => !this.isGuest,
+        },
       ],
     };
   },
 
   computed: {
     ...mapGetters('user', ['isGuest']),
+  },
+
+  methods: {
+    ...mapActions('user', ['quit']),
   },
 
   created() {

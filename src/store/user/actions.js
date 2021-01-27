@@ -1,11 +1,21 @@
-import { signIn, getSelf } from '@/api/user';
+import { signIn, signUp, getSelf } from '@/api/user';
 
 const ACCESS_TOKEN_STORAGE = 'access_token';
 
 export default {
-  async signIn({ dispatch }, { login, password }) {
-    console.log(this.$axios);
-    const { accessToken } = await signIn(this.$axios, { login, password });
+  async signUp({ commit }, body) {
+    const user = await signUp(this.$axios, body);
+    const { accessToken } = await signIn(this.$axios, {
+      login: body.email,
+      passowrd: body.password,
+    });
+
+    commit('setToken', accessToken);
+    commit('setUser', user);
+  },
+
+  async signIn({ dispatch }, body) {
+    const { accessToken } = await signIn(this.$axios, body);
 
     dispatch('setToken', accessToken);
 
@@ -14,13 +24,12 @@ export default {
 
   setToken({ commit }, token) {
     commit('setToken', token);
-    window.localStorage.setItem(ACCESS_TOKEN_STORAGE, token);
+    window.localStorage.setItem(ACCESS_TOKEN_STORAGE, token || '');
   },
 
   async loadUser({ commit }) {
     const user = await getSelf(this.$axios);
 
-    console.log(user);
     commit('setUser', user);
 
     return user;
@@ -34,5 +43,10 @@ export default {
 
       await dispatch('loadUser');
     }
+  },
+
+  async quit({ dispatch, commit }) {
+    dispatch('setToken', null);
+    commit('setUser');
   },
 };
