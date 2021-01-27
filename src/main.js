@@ -9,7 +9,7 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
 import App from './app/index.vue';
-import router from './router';
+import getRouter from './router';
 import store from './store';
 
 // Plugins
@@ -17,8 +17,8 @@ import axiosPlugin from './plugins/axios';
 
 createApp(App)
   .use(store)
-  .use(router)
   .use(axiosPlugin)
+  .use(getRouter(store))
   .use(PrimeVue, { ripple: true })
   .use(ToastService)
   .mount('#app');

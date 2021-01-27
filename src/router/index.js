@@ -18,9 +18,18 @@ const routes = [
   },
 ];
 
-const router = createRouter({
-  history: createWebHistory(process.env.VUE_APP_BASE_URL),
-  routes,
-});
+export default (store) => {
+  const router = createRouter({
+    history: createWebHistory(process.env.VUE_APP_BASE_URL),
+    routes,
+  });
 
-export default router;
+  router.beforeEach((to, from, next) => {
+    const isGuest = store.getters['user/isGuest'];
+
+    if (to.meta.needAuth && isGuest) next('/');
+    else next();
+  });
+
+  return router;
+};
