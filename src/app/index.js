@@ -1,4 +1,5 @@
 import { mapGetters, mapActions } from 'vuex';
+import flatry from 'flatry';
 import Toast from 'primevue/toast';
 import Menubar from 'primevue/menubar';
 
@@ -38,7 +39,7 @@ export default {
         },
         {
           label: 'Выход',
-          command: () => this.quit(),
+          command: () => this.signOut(),
           visible: () => !this.isGuest,
         },
       ],
@@ -51,6 +52,20 @@ export default {
 
   methods: {
     ...mapActions('user', ['quit']),
+
+    async signOut() {
+      const [err] = await flatry(this.quit());
+
+      if (err) {
+        this.$toast.add({
+          severity: 'error',
+          summary: err.serverError || 'Ошибка при выходе',
+          life: 5000,
+        });
+      } else {
+        this.$router.push('/');
+      }
+    },
   },
 
   created() {

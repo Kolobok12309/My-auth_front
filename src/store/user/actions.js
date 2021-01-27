@@ -1,4 +1,6 @@
-import { signIn, signUp, getSelf } from '@/api/user';
+import {
+  signIn, signUp, getSelf, signOut,
+} from '@/api/user';
 
 const ACCESS_TOKEN_STORAGE = 'access_token';
 
@@ -46,6 +48,8 @@ export default {
   },
 
   async quit({ dispatch, commit }) {
+    await signOut(this.$axios);
+
     dispatch('setToken', null);
     commit('setUser');
   },

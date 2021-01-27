@@ -7,5 +7,8 @@ export const getSelf = ({ $get }) =>
 export const signUp = ({ $post }, body) =>
   $post('/signUp', body);
 
+export const signOut = ({ $post }) =>
+  $post('/signOut');
+
 export const revokeToken = ({ $delete }, tokenId) =>
   $delete(`/tokens/${tokenId}`);
