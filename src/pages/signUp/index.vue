@@ -32,6 +32,20 @@
         </div>
 
         <div class="p-field">
+          <label for="group">Группа</label>
+
+          <Dropdown
+            v-model="form.groupId"
+            :options="groups"
+            :disabled="!groups.length"
+            optionLabel="title"
+            optionValue="id"
+            dataKey="id"
+            placeholder="Выберите группу (необязательно)"
+          />
+        </div>
+
+        <div class="p-field">
           <label for="password">Пароль</label>
 
           <InputText
