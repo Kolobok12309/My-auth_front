@@ -86,7 +86,8 @@
           <File
             v-for="file in selected.files"
             :key="file.id"
-            :file="file"
+            :name="file.name"
+            class="tasks__sidebar__file"
           />
         </Fieldset>
 

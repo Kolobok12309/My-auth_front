@@ -9,6 +9,7 @@ import ScrollPanel from 'primevue/scrollpanel';
 import Divider from 'primevue/divider';
 
 import Table from '@/components/table';
+import File from '@/components/file';
 
 import { getTasks } from '@/api/task';
 
@@ -16,6 +17,7 @@ export default {
   components: {
     Card,
     Table,
+    File,
     Column,
     Sidebar,
     Fieldset,

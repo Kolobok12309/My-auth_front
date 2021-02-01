@@ -50,8 +50,8 @@ export default {
   },
 
   methods: {
-    onRowSelect(data) {
-      this.$emit('rowSelect', data);
+    onRowSelect(event) {
+      this.$emit('rowSelect', event.data);
     },
 
     onChangePage(event) {
