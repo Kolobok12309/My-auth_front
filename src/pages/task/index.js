@@ -3,6 +3,10 @@ import flatry from 'flatry';
 
 import Card from 'primevue/card';
 import Column from 'primevue/column';
+import Sidebar from 'primevue/sidebar';
+import Fieldset from 'primevue/fieldset';
+import ScrollPanel from 'primevue/scrollpanel';
+import Divider from 'primevue/divider';
 
 import Table from '@/components/table';
 
@@ -13,6 +17,10 @@ export default {
     Card,
     Table,
     Column,
+    Sidebar,
+    Fieldset,
+    ScrollPanel,
+    Divider,
   },
 
   data() {
@@ -20,6 +28,9 @@ export default {
       meta: null,
       pending: true,
       tasks: [],
+
+      sidebar: false,
+      selected: null,
     };
   },
 
@@ -106,12 +117,17 @@ export default {
       this.pending = false;
     },
 
-    onRowSelect(event) {
-      console.log(event.data);
+    onRowSelect(task) {
+      this.selected = task;
+      this.sidebar = true;
     },
 
     onChangePage(event) {
       this.loadTasks(event.page + 1, event.rows);
+    },
+
+    onSidebarHide() {
+      this.selected = null;
     },
   },
 };

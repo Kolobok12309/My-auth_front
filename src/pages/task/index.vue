@@ -1,5 +1,5 @@
 <template>
-  <div class="p-d-flex">
+  <div class="p-d-flex tasks">
     <Table
       :title="title"
       :items="tasks"
@@ -7,7 +7,7 @@
       :page="meta && meta.page"
       :perPage="meta && meta.perPage"
       :totalCount="meta && meta.totalCount"
-      class="tasks-card p-mx-auto p-col-6"
+      class="p-mx-auto p-sm-11 p-md-10 p-xl-8"
       @rowSelect="onRowSelect"
       @page="onChangePage"
     >
@@ -50,6 +50,85 @@
         </template>
       </Column>
     </Table>
+
+    <Sidebar
+      v-model:visible="sidebar"
+      position="right"
+      class="p-sidebar-sm"
+      @hide="onSidebarHide"
+    >
+      <ScrollPanel class="tasks__sidebar__scroll">
+        <Fieldset legend="Название">
+          {{ selected.title }}
+        </Fieldset>
+
+        <Fieldset
+          legend="Статус"
+          class="p-mt-3"
+        >
+          {{ selected.status }}
+        </Fieldset>
+
+        <Fieldset
+          legend="Описание"
+          toggleable
+          class="p-mt-3"
+        >
+          {{ selected.description }}
+        </Fieldset>
+
+        <Fieldset
+          v-if="selected.files.length"
+          legend="Файлы"
+          toggleable
+          class="p-mt-3"
+        >
+          <File
+            v-for="file in selected.files"
+            :key="file.id"
+            :file="file"
+          />
+        </Fieldset>
+
+        <Fieldset
+          v-if="selected.deadline"
+          legend="Срок сдачи"
+          class="p-mt-3"
+        >
+          {{ selected.deadline }}
+        </Fieldset>
+
+        <Fieldset
+          v-if="selected.user"
+          legend="Пользователь"
+          toggleable
+          class="p-mt-3"
+        >
+          {{ selected.user.username }}#{{ selected.user.id }}
+        </Fieldset>
+
+        <Fieldset
+          v-if="selected.group"
+          legend="Отдел"
+          toggleable
+          class="p-mt-3"
+        >
+          {{ selected.group.name }}#{{ selected.group.id }}
+        </Fieldset>
+
+        <Fieldset
+          legend="Создан"
+          toggleable
+          class="p-mt-3"
+        >
+          {{ selected.createdAt }}
+
+          <Divider />
+
+          {{ (selected.createdBy && selected.createdBy.username + `#${selected.createdBy.id}`) || 'Удален' }}
+        </Fieldset>
+      </ScrollPanel>
+    </Sidebar>
   </div>
 </template>
 
