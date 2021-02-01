@@ -3,9 +3,13 @@ const process = require('process');
 module.exports = {
   publicPath: process.env.PUBLIC_PATH || '',
 
-  configureWebpack: (config) => {
-    const extensionsWithoutVue = config.resolve.extensions.filter((ext) => ext !== '.vue');
+  chainWebpack: (config) => {
+    config.resolve.extensions
+      .prepend('.vue');
 
-    config.resolve.extensions = ['.vue', ...extensionsWithoutVue];
+    config.module
+      .rule('eslint')
+      .use('eslint-loader')
+      .tap((opts) => ({ ...opts, emitWarning: true }));
   },
 };

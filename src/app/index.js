@@ -22,9 +22,17 @@ export default {
           items: [
             {
               label: 'Мои задачи',
+              to: '/task/my',
             },
             {
               label: 'Задачи отдела',
+              visible: () => this.hasGroup,
+              to: '/task/group',
+            },
+            {
+              label: 'Все задачи',
+              visible: () => !this.hasGroup,
+              to: '/task/all',
             },
           ],
         },
@@ -47,7 +55,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('user', ['isGuest']),
+    ...mapGetters('user', ['isGuest', 'hasGroup']),
   },
 
   methods: {

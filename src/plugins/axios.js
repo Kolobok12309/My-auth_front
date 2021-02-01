@@ -14,9 +14,12 @@ const initRequestHelpers = (instance) => {
 
 export default {
   install(app) {
+    const { globalProperties } = app.config;
+
     const axiosInstance = axios.create({
       baseURL: process.env.VUE_APP_API_URL,
     });
+
     const onError = (error) => {
       if (isCancel(error)) return error;
 
@@ -28,6 +31,17 @@ export default {
       if (typeof data.message === 'string') serverError = data.message;
       else if (Array.isArray(data.message)) serverError = data.message.join(', ');
       else if (data.error) serverError = data.error;
+
+      if (response.status === 401) {
+        if (globalProperties.$store) {
+          globalProperties.$store.dispatch('user/setToken', null);
+          globalProperties.$store.commit('user/setUser');
+        }
+
+        if (globalProperties.$router) {
+          globalProperties.$router.push('/');
+        }
+      }
 
       const info = {
         path: config.url,
@@ -46,9 +60,10 @@ export default {
 
     axiosInstance.interceptors.response.use(null, onError);
 
-    app.config.globalProperties.$axios = axiosInstance;
+    globalProperties.$axios = axiosInstance;
 
-    const store = app.config.globalProperties.$store;
+    const store = globalProperties.$store;
+
     if (store) {
       store.$axios = axiosInstance;
 
