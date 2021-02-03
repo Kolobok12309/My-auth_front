@@ -24,7 +24,7 @@ export default {
     async onSubmit() {
       const { login, password } = this;
 
-      const [err] = await flatry(this.signIn({ login, password }));
+      const [err, user] = await flatry(this.signIn({ login, password }));
 
       if (err) {
         this.$toast.add({
@@ -33,7 +33,7 @@ export default {
           life: 5000,
         });
       } else {
-        this.$router.push('/');
+        this.$router.push(`/user/${user.id}/profile`);
       }
     },
   },

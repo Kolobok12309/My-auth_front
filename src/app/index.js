@@ -1,4 +1,4 @@
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions, mapState } from 'vuex';
 import flatry from 'flatry';
 import Toast from 'primevue/toast';
 import Menubar from 'primevue/menubar';
@@ -11,33 +11,28 @@ export default {
 
   data() {
     return {
-      navItems: [
+    };
+  },
+
+  computed: {
+    ...mapState('user', ['id']),
+
+    ...mapGetters('user', ['isGuest']),
+
+    navItems() {
+      return [
         {
           label: 'Главная',
           to: '/',
         },
         {
-          label: 'Задачи',
+          label: 'Профиль',
+          to: `/user/${this.id}/profile`,
           visible: () => !this.isGuest,
-          items: [
-            {
-              label: 'Мои задачи',
-              to: '/task/my',
-            },
-            {
-              label: 'Задачи отдела',
-              visible: () => this.hasGroup,
-              to: '/task/group',
-            },
-            {
-              label: 'Все задачи',
-              visible: () => !this.hasGroup,
-              to: '/task/all',
-            },
-          ],
         },
         {
           label: 'Настройки',
+          to: `/user/${this.id}/settings`,
           visible: () => !this.isGuest,
         },
         {
@@ -50,12 +45,8 @@ export default {
           command: () => this.signOut(),
           visible: () => !this.isGuest,
         },
-      ],
-    };
-  },
-
-  computed: {
-    ...mapGetters('user', ['isGuest', 'hasGroup']),
+      ];
+    },
   },
 
   methods: {

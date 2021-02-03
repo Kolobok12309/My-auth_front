@@ -21,7 +21,7 @@ export default {
 
     dispatch('setToken', accessToken);
 
-    await dispatch('loadUser');
+    return dispatch('loadUser');
   },
 
   setToken({ commit }, token) {

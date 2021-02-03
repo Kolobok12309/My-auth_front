@@ -5,9 +5,6 @@ const routes = [
     path: '/',
     name: 'Index',
     component: () => import(/* webpackChunkName: "guest" */ '@/pages/index'),
-    meta: {
-      // needAuth: false,
-    },
   },
   {
     path: '/signIn',
@@ -70,7 +67,7 @@ export default (store) => {
     else if (to.meta.needAuth !== isGuest) {
       next();
     } else {
-      next(isGuest ? '/' : '/');
+      next(isGuest || !id ? '/' : `/user/${id}/profile`);
     }
   });
 
