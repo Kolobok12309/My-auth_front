@@ -49,7 +49,32 @@
         {{ (user && `${user.username}#${user.id}`) || '-' }}
       </template>
     </Column>
+
+    <Column
+      field="actions"
+      header="#"
+      headerClass="p-text-center"
+      bodyClass="p-text-center"
+    >
+      <template #body="{ data }">
+        <i
+          class="pi pi-pencil task-table__action"
+          @click.stop="onEdit(data)"
+        />
+
+        <i
+          class="pi pi-trash task-table__action"
+          @click.stop="onDelete(data)"
+        />
+      </template>
+    </Column>
   </Table>
 </template>
 
 <script src="./index.js"></script>
+
+<style
+  src="./index.styl"
+  lang="stylus"
+  scoped
+></style>

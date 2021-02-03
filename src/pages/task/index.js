@@ -118,5 +118,13 @@ export default {
     onSidebarHide() {
       this.selected = null;
     },
+
+    onEdit(task) {
+
+    },
+
+    onDelete(task) {
+
+    },
   },
 };

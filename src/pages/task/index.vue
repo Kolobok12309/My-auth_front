@@ -10,6 +10,8 @@
       class="p-mx-auto p-sm-11 p-md-10 p-xl-8"
       @rowSelect="onRowSelect"
       @page="onChangePage"
+      @edit="onEdit"
+      @delete="onDelete"
     />
 
     <TaskSidebar

@@ -41,4 +41,14 @@ export default {
       default: 0,
     },
   },
+
+  methods: {
+    onEdit(task) {
+      this.$emit('edit', task);
+    },
+
+    onDelete(task) {
+      this.$emit('delete', task);
+    },
+  },
 };
