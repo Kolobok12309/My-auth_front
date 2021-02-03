@@ -12,13 +12,13 @@ const initRequestHelpers = (instance) => {
   });
 };
 
+export const axiosInstance = axios.create({
+  baseURL: process.env.VUE_APP_API_URL,
+});
+
 export default {
   install(app) {
     const { globalProperties } = app.config;
-
-    const axiosInstance = axios.create({
-      baseURL: process.env.VUE_APP_API_URL,
-    });
 
     const onError = (error) => {
       if (isCancel(error)) return error;

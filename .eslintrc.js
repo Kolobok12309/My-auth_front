@@ -16,7 +16,9 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/extensions': ["error", "ignorePackages", {
       vue: 'never',
+      js: 'never',
     }],
+    'consistent-return': 'off',
     'implicit-arrow-linebreak': 'off',
   },
 };

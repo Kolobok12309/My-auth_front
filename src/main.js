@@ -15,10 +15,12 @@ import store from './store';
 // Plugins
 import axiosPlugin from './plugins/axios';
 
-createApp(App)
+const app = createApp(App)
   .use(store)
   .use(axiosPlugin)
   .use(getRouter(store))
   .use(PrimeVue, { ripple: true })
   .use(ToastService)
   .mount('#app');
+
+window.app = app;
