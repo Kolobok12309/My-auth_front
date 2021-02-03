@@ -1,28 +1,15 @@
 import { mapGetters, mapState } from 'vuex';
 import flatry from 'flatry';
 
-import Card from 'primevue/card';
-import Column from 'primevue/column';
-import Sidebar from 'primevue/sidebar';
-import Fieldset from 'primevue/fieldset';
-import ScrollPanel from 'primevue/scrollpanel';
-import Divider from 'primevue/divider';
-
-import Table from '@/components/table';
-import File from '@/components/file';
-
 import { getTasks } from '@/api/task';
+
+import TaskTable from './table';
+import TaskSidebar from './sidebar';
 
 export default {
   components: {
-    Card,
-    Table,
-    File,
-    Column,
-    Sidebar,
-    Fieldset,
-    ScrollPanel,
-    Divider,
+    TaskTable,
+    TaskSidebar,
   },
 
   data() {
