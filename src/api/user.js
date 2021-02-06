@@ -13,6 +13,9 @@ export const refreshToken = ({ $post }) =>
 export const getTokens = ({ $get }) =>
   $get('/tokens');
 
+export const getUserTokens = ({ $get }, userId) =>
+  $get(`/tokens/${userId}`);
+
 export const revokeToken = ({ $delete }, tokenId) =>
   $delete(`/tokens/${tokenId}`);
 

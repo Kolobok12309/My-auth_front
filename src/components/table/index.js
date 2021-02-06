@@ -25,6 +25,11 @@ export default {
       default: false,
     },
 
+    paginator: {
+      type: Boolean,
+      default: true,
+    },
+
     page: {
       type: Number,
       default: 1,

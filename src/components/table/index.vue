@@ -22,6 +22,7 @@
       </DataTable>
 
       <Paginator
+        v-if="paginator"
         :totalRecords="totalCount"
         :first="first"
         :rows="perPage"

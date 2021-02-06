@@ -1,4 +1,3 @@
-import { mapState, mapGetters } from 'vuex';
 import flatry from 'flatry';
 
 import TaskFilter from '@/components/task/filter';
@@ -15,6 +14,11 @@ export default {
   props: {
     user: {
       type: Object,
+      required: true,
+    },
+
+    isMe: {
+      type: Boolean,
       required: true,
     },
   },
@@ -35,14 +39,6 @@ export default {
   },
 
   computed: {
-    ...mapState('user', ['id', 'groupId']),
-
-    ...mapGetters('user', ['hasGroup']),
-
-    isMe() {
-      return this.id === this.user.id;
-    },
-
     tableTitle() {
       return this.isMe
         ? 'Мои задачи'

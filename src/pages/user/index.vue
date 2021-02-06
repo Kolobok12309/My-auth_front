@@ -53,6 +53,7 @@
         >
           <router-view
             :user="user"
+            :isMe="isMe"
             :pending="pending"
           />
         </SpinnerHelper>
