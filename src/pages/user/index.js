@@ -53,6 +53,24 @@ export default {
     },
   },
 
+  methods: {
+    async onUpdate() {
+      const [err, user] = await flatry(getUser(axiosInstance, this.id));
+
+      if (err) {
+        this.$toast.add({
+          severity: 'error',
+          summary: err.serverError || 'Ошибка обновления информации о пользователе',
+          life: 5000,
+        });
+        return;
+      }
+
+      this.user = user;
+      if (this.isMe) this.$store.commit('user/setUser', user);
+    },
+  },
+
   async beforeRouteEnter(to, from, next) {
     const { id } = to.params;
 

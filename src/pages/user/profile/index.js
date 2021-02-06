@@ -50,6 +50,20 @@ export default {
     },
   },
 
+  watch: {
+    user: {
+      async handler(newVal) {
+        const { id, groupId } = newVal;
+
+        this.filter.userId = id;
+        if (groupId) this.filter.groupId = groupId;
+
+        await this.loadTasks();
+      },
+      immediate: true,
+    },
+  },
+
   methods: {
     onFilter() {
       this.loadTasks();
@@ -83,14 +97,5 @@ export default {
       this.meta = meta;
       this.pending = false;
     },
-  },
-
-  async created() {
-    const { id, groupId } = this.user;
-
-    this.filter.userId = id;
-    if (groupId) this.filter.groupId = groupId;
-
-    await this.loadTasks();
   },
 };

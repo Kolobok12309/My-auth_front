@@ -1,13 +1,15 @@
 import flatry from 'flatry';
-import Card from 'primevue/card';
 
-import { getUserTokens, getTokens, revokeToken } from '@/api/user';
+import {
+  getUserTokens, getTokens, revokeToken, updateUser,
+} from '@/api/user';
 
+import SettingsForm from './settings-form';
 import TokensTable from './tokens-table';
 
 export default {
   components: {
-    Card,
+    SettingsForm,
     TokensTable,
   },
 
@@ -32,10 +34,6 @@ export default {
 
       settingsPending: false,
     };
-  },
-
-  computed: {
-
   },
 
   methods: {
@@ -86,6 +84,32 @@ export default {
         life: 5000,
       });
       this.tokensPending = false;
+    },
+
+    async onSettingsUpdate(data) {
+      const { id } = this.user;
+
+      this.settingsPending = true;
+      const [err] = await flatry(updateUser(this.$axios, id, data));
+
+      if (err) {
+        this.$toast.add({
+          severity: 'error',
+          summary: err.serverError || 'Ошибка при изменении настроек',
+          life: 5000,
+        });
+        this.settingsPending = false;
+        return;
+      }
+
+      this.$toast.add({
+        severity: 'success',
+        summary: 'Настройки успешно изменены',
+        life: 5000,
+      });
+      this.$emit('update');
+
+      this.settingsPending = false;
     },
   },
 

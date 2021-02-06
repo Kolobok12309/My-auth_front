@@ -7,7 +7,9 @@
     class="tokens-table"
   >
     <template #empty>
-      Токены не найдены
+      <div class="p-text-center">
+        Токены не найдены
+      </div>
     </template>
 
     <Column
