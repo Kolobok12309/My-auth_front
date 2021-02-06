@@ -1,6 +1,9 @@
 export const getGroups = ({ $get }, params = {}) =>
   $get('/group', { params });
 
+export const searchGroup = ({ $get }, text = '') =>
+  $get('/group/search', { params: { text } });
+
 export const getGroup = ({ $get }, id) =>
   $get(`/group/${id}`);
 

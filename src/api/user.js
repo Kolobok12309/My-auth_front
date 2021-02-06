@@ -19,6 +19,9 @@ export const revokeToken = ({ $delete }, tokenId) =>
 export const getUsers = ({ $get }, params) =>
   $get('/user', { params });
 
+export const searchUser = ({ $get }, text = '') =>
+  $get('/user/search', { params: { text } });
+
 export const getSelf = ({ $get }) =>
   $get('/user/self');
 
