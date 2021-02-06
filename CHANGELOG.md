@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.4...v0.1.5) (2021-02-06)
+
+
+### Features
+
+* **groups:** :sparkles: Add groupPicker ([6776db8](https://github.com/Kolobok12309/My-auth_front/commit/6776db8ca1c21cfc658890f7e9d5c29fd39dd33b))
+* **task:** :sparkles: Add task filter ([e50366a](https://github.com/Kolobok12309/My-auth_front/commit/e50366aa18a6cd54e587a5fcb4e92519d899b052))
+* **user:** :sparkles: Add profile page and component helpers ([c17742c](https://github.com/Kolobok12309/My-auth_front/commit/c17742ce54f075381690d8b9dec302c37f430be3))
+* **user:** :sparkles: Add user picker ([220cf89](https://github.com/Kolobok12309/My-auth_front/commit/220cf8956f77f55a5fbd3ec6fd99fa6fe113aaf1))
+
 ### [0.1.4](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.3...v0.1.4) (2021-02-06)
 
 
