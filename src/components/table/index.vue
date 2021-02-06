@@ -8,9 +8,16 @@
       <DataTable
         :value="items"
         selectionMode="single"
+        resizableColumns
         :loading="pending"
+        columnResizeMode="fit"
+        class="p-datatable-striped p-datatable-gridlines"
         @rowSelect="onRowSelect"
       >
+        <template #empty>
+          <slot name="empty" />
+        </template>
+
         <slot/>
       </DataTable>
 

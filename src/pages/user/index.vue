@@ -47,10 +47,15 @@
       />
 
       <div class="user-page__center__content">
-        <router-view
-          :user="user"
+        <SpinnerHelper
           :pending="pending"
-        />
+          class="p-mx-auto p-mt-6"
+        >
+          <router-view
+            :user="user"
+            :pending="pending"
+          />
+        </SpinnerHelper>
       </div>
     </div>
   </div>

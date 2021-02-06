@@ -2,7 +2,7 @@
   <div class="p-d-flex tasks">
     <TaskTable
       :title="title"
-      :items="tasks"
+      :tasks="tasks"
       :pending="pending"
       :page="meta && meta.page"
       :perPage="meta && meta.perPage"

@@ -5,6 +5,7 @@ import Menubar from 'primevue/menubar';
 
 import Role from '@/components/role';
 import SkeletonHelper from '@/components/skeleton-helper';
+import SpinnerHelper from '@/components/spinner-helper';
 import Group from '@/components/group/view';
 
 export default {
@@ -13,5 +14,6 @@ export default {
   Menubar,
   Role,
   SkeletonHelper,
+  SpinnerHelper,
   Group,
 };

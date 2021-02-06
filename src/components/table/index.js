@@ -41,6 +41,8 @@ export default {
     },
   },
 
+  emits: ['rowSelect', 'page'],
+
   computed: {
     first() {
       const { page = 1, perPage = 20 } = this;
