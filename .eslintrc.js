@@ -20,5 +20,6 @@ module.exports = {
     }],
     'consistent-return': 'off',
     'implicit-arrow-linebreak': 'off',
+    'no-bitwise': ['error', { 'allow': ['~'] }],
   },
 };
