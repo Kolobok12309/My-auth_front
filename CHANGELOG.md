@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.5...v0.1.6) (2021-02-06)
+
+
+### Features
+
+* **auth:** :sparkles: Add tokens delete ([930b8bc](https://github.com/Kolobok12309/My-auth_front/commit/930b8bc8ce43211e0cc3e56262bdbf0346351fc7))
+* **user:** :sparkles: Add tokens table and WIP Settings ([deed24e](https://github.com/Kolobok12309/My-auth_front/commit/deed24e70707e8efd2199a4a6484915db99d1c1f))
+* **user:** :sparkles: Add user settings ([e6df4e2](https://github.com/Kolobok12309/My-auth_front/commit/e6df4e2c59306e544dfcd3b49b77eaed9aa73f14))
+* **user:** :zap: Add profile components caching ([d891d69](https://github.com/Kolobok12309/My-auth_front/commit/d891d69e7d95d51211e4d409ee07e706f7fcc6e4))
+
+
+### Bug Fixes
+
+* **groups:** :bug: Add init groupPicker and styles ([759628b](https://github.com/Kolobok12309/My-auth_front/commit/759628babf8d427fd4fb48d27197644e3ab8e604))
+* **user:** :bug: Fix hasGroup getter ([3597ff6](https://github.com/Kolobok12309/My-auth_front/commit/3597ff64d443fda5cab7d25527e4a1f74baffe61))
+
 ### [0.1.5](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.4...v0.1.5) (2021-02-06)
 
 
