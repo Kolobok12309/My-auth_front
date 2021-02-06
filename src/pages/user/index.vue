@@ -55,7 +55,15 @@
             :user="user"
             :isMe="isMe"
             :pending="pending"
-          />
+            v-slot="{ Component }"
+          >
+            <keep-alive max="2">
+              <component
+                :is="Component"
+                :key="$route.fullPath"
+              />
+            </keep-alive>
+          </router-view>
         </SpinnerHelper>
       </div>
     </div>
