@@ -1,5 +1,6 @@
 <template>
   <Dropdown
+    v-model="compValue"
     class="group-picker"
     optionLabel="name"
     optionValue="id"
