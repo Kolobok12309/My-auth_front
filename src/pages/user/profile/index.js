@@ -44,6 +44,10 @@ export default {
         ? 'Мои задачи'
         : 'Задачи';
     },
+
+    hasGroup() {
+      return this.user.groupId !== null;
+    },
   },
 
   methods: {
