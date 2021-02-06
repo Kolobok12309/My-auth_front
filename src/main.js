@@ -1,3 +1,4 @@
+import flatry from 'flatry';
 import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
 import ToastService from 'primevue/toastservice';
@@ -15,12 +16,22 @@ import store from './store';
 // Plugins
 import axiosPlugin from './plugins/axios';
 
-const app = createApp(App)
-  .use(store)
-  .use(axiosPlugin)
-  .use(getRouter(store))
-  .use(PrimeVue, { ripple: true })
-  .use(ToastService)
-  .mount('#app');
+const initApp = async () => {
+  const app = createApp(App)
+    .use(store)
+    .use(axiosPlugin);
 
-window.app = app;
+  await flatry(store.dispatch('init'));
+
+  return app
+    .use(getRouter(store))
+    .use(PrimeVue, { ripple: true })
+    .use(ToastService);
+};
+
+initApp()
+  .then((app) => {
+    window.app = app;
+
+    app.mount('#app');
+  });

@@ -5,6 +5,9 @@ const routes = [
     path: '/',
     name: 'Index',
     component: () => import(/* webpackChunkName: "guest" */ '@/pages/index'),
+    meta: {
+      needAuth: false,
+    },
   },
   {
     path: '/signIn',

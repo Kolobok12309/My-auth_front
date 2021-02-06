@@ -8,6 +8,11 @@ export default createStore({
   mutations: {
   },
   actions: {
+    async init({ dispatch }) {
+      await Promise.all([
+        dispatch('user/init', null, { root: true }),
+      ]);
+    },
   },
   modules: {
     user,

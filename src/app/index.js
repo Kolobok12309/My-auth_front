@@ -66,8 +66,4 @@ export default {
       }
     },
   },
-
-  beforeCreate() {
-    this.$store.dispatch('user/init');
-  },
 };
