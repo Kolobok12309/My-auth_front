@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.3...v0.1.4) (2021-02-06)
+
+
+### Features
+
+* :sparkles: Add file component ([950759f](https://github.com/Kolobok12309/My-auth_front/commit/950759fb92d2f703923e474d8c5bc5ebfa6ee1a8))
+* :sparkles: Add sidebar to task page ([917229f](https://github.com/Kolobok12309/My-auth_front/commit/917229fb3aaa09dbab341b02a3fa6606f8930c18))
+* :sparkles: Add task page, 401 status logic and route gueards ([073df9a](https://github.com/Kolobok12309/My-auth_front/commit/073df9acc5be0c8690e3ee3ea21e93f24a4f660a))
+* :zap: Add all api calls and group field to signUp ([5f9fbd5](https://github.com/Kolobok12309/My-auth_front/commit/5f9fbd51f3a416c25587c9550f2039612a0b967b))
+* :zap: Add app initialization with waiting for load user data ([a5fe615](https://github.com/Kolobok12309/My-auth_front/commit/a5fe6155ec9f6861a68731da6911e1aebeacae27))
+* :zap: Add needAuth guard to routes ([f7e45c6](https://github.com/Kolobok12309/My-auth_front/commit/f7e45c63ceed68014747f26f6fa3ac0d7be21643))
+* Add Group component ([20e098b](https://github.com/Kolobok12309/My-auth_front/commit/20e098b35ecc1168055889b111b6b04cd80716d8))
+* Add task actions buttons ([4757db9](https://github.com/Kolobok12309/My-auth_front/commit/4757db9c16a2e8b09d7629494022668b70881d49))
+
 ### [0.1.3](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.2...v0.1.3) (2021-01-27)
 
 
