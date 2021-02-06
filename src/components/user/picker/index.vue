@@ -1,16 +1,16 @@
 <template>
   <Dropdown
-    class="group-picker"
-    optionLabel="name"
+    class="user-picker"
+    optionLabel="username"
     optionValue="id"
     dataKey="id"
-    placeholder="Отдел"
     filterPlaceholder="Поиск"
-    emptyFilterMessage="Отделы не найдены"
+    emptyFilterMessage="Пользователи не найдены"
     filter
     showClear
-    :options="groups"
-    @filter="searchGroups"
+    :options="users"
+    :placeholder="placeholder"
+    @filter="searchUsers"
   />
 </template>
 

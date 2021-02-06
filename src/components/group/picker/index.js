@@ -1,7 +1,7 @@
 import Dropdown from 'primevue/dropdown';
 import throttle from 'lodash/throttle';
 
-import { searchGroup } from '@/api/group';
+import { searchGroups } from '@/api/group';
 
 export default {
   components: {
@@ -15,14 +15,14 @@ export default {
   },
 
   methods: {
-    searchGroup: throttle(async function ({ value = '' } = {}) {
+    searchGroups: throttle(async function ({ value = '' } = {}) {
       try {
-        this.groups = await searchGroup(this.$axios, value);
+        this.groups = await searchGroups(this.$axios, value);
       } catch (err) {}
     }, 300),
   },
 
   mounted() {
-    this.searchGroup();
+    this.searchGroups();
   },
 };
