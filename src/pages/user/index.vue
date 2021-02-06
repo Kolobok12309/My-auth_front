@@ -27,9 +27,7 @@
             <template v-if="user.group">
               Отдел:
 
-              <router-link :to="'/group/' + user.group.id">
-                {{ user.group.name }}
-              </router-link>
+              <Group :group="user.group" />
             </template>
           </SkeletonHelper>
 

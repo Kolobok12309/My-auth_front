@@ -5,6 +5,7 @@ import Menubar from 'primevue/menubar';
 
 import Role from '@/components/role';
 import SkeletonHelper from '@/components/skeleton-helper';
+import Group from '@/components/group';
 
 export default {
   Card,
@@ -12,4 +13,5 @@ export default {
   Menubar,
   Role,
   SkeletonHelper,
+  Group,
 };
