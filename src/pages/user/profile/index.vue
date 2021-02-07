@@ -3,6 +3,7 @@
     <TaskFilter
       :pending="pending"
       v-model:text="filter.text"
+      v-model:status="filter.status"
       v-model:groupId="filter.groupId"
       :hideGroup="hasGroup"
       hideUser

@@ -4,6 +4,7 @@ import Button from 'primevue/button';
 
 import GroupPicker from '@/components/group/picker';
 import UserPicker from '@/components/user/picker';
+import StatusPicker from '@/components/status/picker';
 
 import mapSyncProps from '@/utils/map-sync-props';
 
@@ -14,6 +15,7 @@ export default {
     Button,
     GroupPicker,
     UserPicker,
+    StatusPicker,
   },
 
   props: {
@@ -47,12 +49,17 @@ export default {
       type: Number,
       default: null,
     },
+
+    status: {
+      type: Number,
+      default: null,
+    },
   },
 
-  emits: ['submit', 'update:text', 'update:userId', 'update:groupId'],
+  emits: ['submit', 'update:text', 'update:status', 'update:userId', 'update:groupId'],
 
   computed: {
-    ...mapSyncProps(['text', 'userId', 'groupId']),
+    ...mapSyncProps(['text', 'status', 'userId', 'groupId']),
   },
 
   methods: {

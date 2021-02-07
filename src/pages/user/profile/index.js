@@ -32,6 +32,7 @@ export default {
 
       filter: {
         text: '',
+        status: null,
         userId: null,
         groupId: null,
       },

@@ -23,6 +23,14 @@
             </span>
           </div>
 
+          <div class="p-col-fixed">
+            <StatusPicker
+              v-model="compStatus"
+              :disabled="pending"
+              showClear
+            />
+          </div>
+
           <div
             v-if="!hideGroup"
             class="p-col-fixed"

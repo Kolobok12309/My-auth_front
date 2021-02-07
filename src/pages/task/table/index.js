@@ -1,7 +1,7 @@
 import Column from 'primevue/column';
 
 import Table from '@/components/table';
-import TaskStatus from '@/components/status';
+import TaskStatus from '@/components/status/view';
 
 export default {
   components: {
