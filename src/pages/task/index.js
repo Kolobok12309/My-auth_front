@@ -2,7 +2,7 @@ import flatry from 'flatry';
 import { mapState, mapGetters } from 'vuex';
 
 import { axiosInstance } from '@/plugins/axios';
-import { getTask } from '@/api/task';
+import { getTask, updateTask } from '@/api/task';
 
 import components from './components';
 
@@ -25,6 +25,30 @@ export default {
 
   computed: {
     ...mapGetters('user', ['isAdmin', 'isDirector']),
+  },
+
+  methods: {
+    async onUpdateStatus(newStatus) {
+      const [err] = await flatry(updateTask(this.$axios, this.task.id, {
+        status: newStatus,
+      }));
+
+      if (err) {
+        this.$toast.add({
+          severity: 'error',
+          summary: err.serverError || 'Ошибка обновления информации о пользователе',
+          life: 5000,
+        });
+        return;
+      }
+
+      this.task.status = newStatus;
+      this.$toast.add({
+        severity: 'success',
+        summary: 'Статус задачи успешно изменён',
+        life: 5000,
+      });
+    },
   },
 
   async beforeRouteEnter(to, from, next) {

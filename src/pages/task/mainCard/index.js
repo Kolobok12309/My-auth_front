@@ -1,3 +1,5 @@
+import { mapGetters } from 'vuex';
+
 import components from './components';
 
 export default {
@@ -15,7 +17,15 @@ export default {
     },
   },
 
-  methods: {
+  emits: ['updateStatus'],
 
+  computed: {
+    ...mapGetters('user', ['isAdmin', 'isDirector']),
+  },
+
+  methods: {
+    updateStatus(newVal) {
+      this.$emit('updateStatus', newVal);
+    },
   },
 };

@@ -5,15 +5,33 @@
         :pending="pending"
         style="height: 1.5rem"
       >
-        <div class="p-d-flex">
+        <div class="p-d-flex p-ai-center">
           <span>
             {{ task.title }} #{{ task.id }}
           </span>
 
-          <StatusView
-            :value="task.status"
-            class="p-ml-auto"
-          />
+          <div class="p-ml-auto p-d-flex p-ai-center">
+            <Inplace closable>
+              <template #display>
+                <StatusView
+                  :value="task.status"
+                />
+              </template>
+
+              <template #content>
+                <StatusPicker
+                  :modelValue="task.status"
+                  @update:modelValue="updateStatus"
+                />
+              </template>
+            </Inplace>
+
+            <Button
+              v-if="isDirector || isAdmin"
+              icon="pi pi-cog"
+              class="p-button-secondary p-button-sm p-button-text p-button-rounded p-ml-2"
+            />
+          </div>
         </div>
       </SkeletonHelper>
     </template>
@@ -51,7 +69,7 @@
 
           <div class="task-main__files">
             <File
-              v-for="file in task.files"
+              v-for="file in files"
               :key="file.id"
               :name="file.name"
             />

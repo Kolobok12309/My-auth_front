@@ -4,6 +4,7 @@
       <TaskMainCard
         :pending="pending"
         :task="task"
+        @updateStatus="onUpdateStatus"
       />
     </div>
 
