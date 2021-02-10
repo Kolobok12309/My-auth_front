@@ -26,16 +26,17 @@ const routes = [
     },
   },
   {
-    path: '/task/:type(my|group|all)',
-    name: 'Tasks',
+    path: '/task/:id(\\d+)',
+    name: 'Task',
     component: () => import('@/pages/task'),
     meta: {
       needAuth: true,
     },
+    props: ({ params }) => ({ id: Number(params.id) }),
   },
   {
     path: '/user/:id(\\d+)',
-    component: () => import('@/pages/user'),
+    component: () => import(/* webpackChunkName: "profile" */ '@/pages/user'),
     meta: {
       needAuth: true,
     },
@@ -45,12 +46,12 @@ const routes = [
         path: 'profile',
         alias: '',
         name: 'Profile',
-        component: () => import('@/pages/user/profile'),
+        component: () => import(/* webpackChunkName: "profile" */ '@/pages/user/profile'),
       },
       {
         path: 'settings',
         name: 'Settings',
-        component: () => import('@/pages/user/settings'),
+        component: () => import(/* webpackChunkName: "profile" */ '@/pages/user/settings'),
       },
     ],
   },

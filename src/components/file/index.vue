@@ -10,6 +10,7 @@
 
         <a
           :href="url"
+          download
           class="file__link"
         >
           <i

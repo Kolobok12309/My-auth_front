@@ -1,25 +1,16 @@
 <template>
-  <div class="p-d-flex tasks">
-    <TaskTable
-      :title="title"
-      :tasks="tasks"
-      :pending="pending"
-      :page="meta && meta.page"
-      :perPage="meta && meta.perPage"
-      :totalCount="meta && meta.totalCount"
-      class="p-mx-auto p-sm-11 p-md-10 p-xl-8"
-      @rowSelect="onRowSelect"
-      @page="onChangePage"
-      @edit="onEdit"
-      @delete="onDelete"
-    />
+  <div class="task p-grid p-mx-0">
+    <div class="p-col-6 p-offset-2">
+      <TaskMainCard
+        :pending="pending"
+        :task="task"
+      />
+    </div>
 
     <TaskSidebar
-      v-model:visible="sidebar"
-      :selected="selected"
-      position="right"
-      class="p-sidebar-md"
-      @hide="onSidebarHide"
+      :pending="pending"
+      :task="task"
+      class="p-col-2"
     />
   </div>
 </template>

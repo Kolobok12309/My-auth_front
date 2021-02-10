@@ -14,4 +14,8 @@ export default {
       default: null,
     },
   },
+
+  methods: {
+
+  },
 };

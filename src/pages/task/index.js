@@ -1,130 +1,75 @@
-import { mapGetters, mapState } from 'vuex';
 import flatry from 'flatry';
+import { mapState, mapGetters } from 'vuex';
 
-import { getTasks } from '@/api/task';
+import { axiosInstance } from '@/plugins/axios';
+import { getTask } from '@/api/task';
 
-import TaskTable from './table';
-import TaskSidebar from './sidebar';
+import components from './components';
 
 export default {
-  components: {
-    TaskTable,
-    TaskSidebar,
+  components,
+
+  props: {
+    id: {
+      type: Number,
+      required: true,
+    },
   },
 
   data() {
     return {
-      meta: null,
+      task: null, // Async
       pending: true,
-      tasks: [],
-
-      sidebar: false,
-      selected: null,
     };
   },
 
   computed: {
-    ...mapState('user', ['groupId', 'id']),
-
-    ...mapGetters('user', ['hasGroup']),
-
-    tasksType() {
-      return this.$route.params.type;
-    },
-
-    title() {
-      switch (this.tasksType) {
-        case 'my':
-          return 'Мои задачи';
-        case 'group':
-          return 'Задачи отдела';
-        case 'all':
-          return 'Все задачи';
-        default:
-          return 'Задачи';
-      }
-    },
-
-    filter() {
-      const filter = {};
-
-      if (this.tasksType === 'my') {
-        filter.userId = this.id;
-      } else if (this.tasksType === 'group' && this.hasGroup) {
-        filter.groupId = this.groupId;
-      }
-
-      return filter;
-    },
-
-    showGroup() {
-      const { hasGroup, tasksType } = this;
-
-      if (tasksType === 'all') return true;
-      if (tasksType === 'group') return false;
-
-      return !hasGroup;
-    },
-
-    showUser() {
-      return this.tasksType !== 'my';
-    },
+    ...mapGetters('user', ['isAdmin', 'isDirector']),
   },
 
-  watch: {
-    tasksType: {
-      handler() {
-        this.loadTasks();
-      },
-      immediate: true,
-    },
+  async beforeRouteEnter(to, from, next) {
+    const { id } = to.params;
+
+    const [err, task] = await flatry(getTask(axiosInstance, id));
+
+    if (err) {
+      this.$toast.add({
+        severity: 'error',
+        summary: err.serverError || 'Ошибка получения задачи',
+        life: 5000,
+      });
+
+      return next(false);
+    }
+
+    next((vm) => {
+      // eslint-disable-next-line no-param-reassign
+      vm.task = task;
+      // eslint-disable-next-line no-param-reassign
+      vm.pending = false;
+    });
   },
 
-  methods: {
-    async loadTasks(page = 1) {
-      const query = {
-        ...this.filter,
-        page,
-        perPage: 20,
-      };
+  async beforeRouteUpdate(to, from, next) {
+    const { id } = to.params;
 
-      this.pending = true;
-      const [err, { items, meta = null } = {}] = await flatry(getTasks(this.$axios, query));
+    if (id === from.params.id) return next();
 
-      if (err) {
-        this.$toast.add({
-          severity: 'error',
-          summary: err.serverError || 'Ошибка загрузки задач',
-          life: 5000,
-        });
-        this.pending = false;
-        return;
-      }
+    this.pending = true;
+    const [err, task] = await flatry(getTask(axiosInstance, id));
+    this.pending = false;
 
-      this.tasks = items;
-      this.meta = meta;
-      this.pending = false;
-    },
+    if (err) {
+      this.$toast.add({
+        severity: 'error',
+        summary: err.serverError || 'Ошибка получения пользователя',
+        life: 5000,
+      });
 
-    onRowSelect(task) {
-      this.selected = task;
-      this.sidebar = true;
-    },
-
-    onChangePage(event) {
-      this.loadTasks(event.page + 1, event.rows);
-    },
-
-    onSidebarHide() {
-      this.selected = null;
-    },
-
-    onEdit(task) {
-
-    },
-
-    onDelete(task) {
-
-    },
+      next(false);
+    } else {
+      this.task = task;
+      next();
+    }
   },
 };
