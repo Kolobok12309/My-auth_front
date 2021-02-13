@@ -36,6 +36,11 @@ export default {
           visible: () => !this.isGuest,
         },
         {
+          label: 'Новая задача',
+          to: '/task/new',
+          visible: () => !this.isGuest,
+        },
+        {
           label: 'Войти',
           to: '/signIn',
           visible: () => this.isGuest,

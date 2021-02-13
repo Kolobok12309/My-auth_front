@@ -26,6 +26,14 @@ const routes = [
     },
   },
   {
+    path: '/task/new',
+    name: 'TaskCreate',
+    component: () => import(/* webpackChunkName: "tasks" */ '@/pages/task/new'),
+    meta: {
+      needAuth: true,
+    },
+  },
+  {
     path: '/task/:id(\\d+)',
     name: 'Task',
     component: () => import(/* webpackChunkName: "tasks" */ '@/pages/task'),
