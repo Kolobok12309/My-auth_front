@@ -1,9 +1,8 @@
 import flatry from 'flatry';
-import { mapState, mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 import { axiosInstance } from '@/plugins/axios';
 import { getTask, updateTask, deleteTask } from '@/api/task';
-import { defaultForm } from '@/components/task/form/config';
 
 import components from './components';
 
