@@ -16,6 +16,11 @@ export default {
       default: null,
     },
 
+    groupId: {
+      type: Number,
+      default: null,
+    },
+
     placeholder: {
       type: String,
       default: 'Пользователь',
@@ -65,7 +70,9 @@ export default {
   methods: {
     searchUsers: throttle(async function ({ value = null } = {}) {
       try {
-        this.users = await searchUsers(this.$axios, value);
+        this.users = await searchUsers(this.$axios, value, {
+          groupId: this.groupId,
+        });
       } catch (err) {}
     }, 300),
 
