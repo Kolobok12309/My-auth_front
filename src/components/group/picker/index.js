@@ -65,6 +65,8 @@ export default {
     }, 300),
 
     async checkAndLoadGroup() {
+      if (!this.compValue) return;
+
       const loaded = this.groups
         .find(({ id }) => id === this.compValue);
 

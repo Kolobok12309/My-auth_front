@@ -77,6 +77,8 @@ export default {
     }, 300),
 
     async checkAndLoadUser() {
+      if (!this.compValue) return;
+
       const loaded = this.users
         .find(({ id }) => id === this.compValue);
 
