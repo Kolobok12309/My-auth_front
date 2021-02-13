@@ -1,11 +1,13 @@
 import Column from 'primevue/column';
 
 import DataTable from '@/components/table';
+import DateView from '@/components/date';
 
 export default {
   components: {
     Column,
     DataTable,
+    DateView,
   },
 
   props: {

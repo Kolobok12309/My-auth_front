@@ -5,17 +5,15 @@
         :pending="pending"
         style="height: 1.5rem"
       >
-        <div class="p-d-flex p-ai-center">
+        <div class="p-d-flex p-flex-wrap p-ai-start p-ai-sm-center p-flex-column p-flex-sm-row">
           <span>
             {{ task.title }} #{{ task.id }}
           </span>
 
-          <div class="p-ml-auto p-d-flex p-ai-center">
+          <div class="p-ml-sm-auto p-mt-2 p-mt-sm-0 p-d-flex p-ai-center">
             <Inplace closable>
               <template #display>
-                <StatusView
-                  :value="task.status"
-                />
+                <StatusView :value="task.status" />
               </template>
 
               <template #content>
@@ -26,11 +24,16 @@
               </template>
             </Inplace>
 
-            <Button
+            <RouterLink
               v-if="isDirector || isAdmin"
-              icon="pi pi-cog"
-              class="p-button-secondary p-button-sm p-button-text p-button-rounded p-ml-2"
-            />
+              :to="`/task/${task.id}/edit`"
+              class="p-reset"
+            >
+              <Button
+                icon="pi pi-cog"
+                class="p-button-secondary p-button-sm p-button-text p-button-rounded p-ml-2"
+              />
+            </RouterLink>
           </div>
         </div>
       </SkeletonHelper>
@@ -44,7 +47,7 @@
 
         в
 
-        {{ task.createdAt }}
+        <DateView :value="task.createdAt" />
       </SkeletonHelper>
 
       <Divider />
@@ -60,9 +63,9 @@
       </template>
 
       <template v-else>
-        <span>
+        <div class="task-main__text">
           {{ task.description }}
-        </span>
+        </div>
 
         <template v-if="task.files.length">
           <Divider />

@@ -10,6 +10,7 @@ import SkeletonHelper from '@/components/skeleton-helper';
 import File from '@/components/file';
 import UserView from '@/components/user/view';
 import GroupView from '@/components/group/view';
+import DateView from '@/components/date';
 
 export default {
   Card,
@@ -23,4 +24,5 @@ export default {
   File,
   UserView,
   GroupView,
+  DateView,
 };

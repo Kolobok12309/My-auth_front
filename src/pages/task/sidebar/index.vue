@@ -30,7 +30,7 @@
       style="height: 6rem"
     >
       <Panel header="Срок сдачи">
-        {{ task.deadline }}
+        <DateView :value="task.deadline" />
       </Panel>
     </SkeletonHelper>
   </div>

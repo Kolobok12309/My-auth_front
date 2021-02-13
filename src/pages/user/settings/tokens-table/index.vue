@@ -33,7 +33,11 @@
     <Column
       field="createdAt"
       header="Дата"
-    />
+    >
+      <template #body="{ data }">
+        <DateView :value="data.createdAt" />
+      </template>
+    </Column>
 
     <Column
       field="actions"
