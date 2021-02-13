@@ -1,5 +1,6 @@
 <template>
   <Dropdown
+    v-model="compValue"
     class="user-picker"
     optionLabel="username"
     optionValue="id"
@@ -8,7 +9,7 @@
     emptyFilterMessage="Пользователи не найдены"
     filter
     showClear
-    :options="users"
+    :options="allUsers"
     :placeholder="placeholder"
     @filter="searchUsers"
   />

@@ -4,6 +4,8 @@ import throttle from 'lodash/throttle';
 import { searchGroups, getGroup } from '@/api/group';
 
 export default {
+  name: 'GroupPicker',
+
   components: {
     Dropdown,
   },
@@ -20,6 +22,7 @@ export default {
   data() {
     return {
       groups: [],
+      group: null,
     };
   },
 
@@ -33,29 +36,52 @@ export default {
         this.$emit('update:modelValue', newVal);
       },
     },
+
+    allGroups() {
+      const groups = this.groups
+        .filter(({ id }) => id !== this.compValue);
+
+      if (this.group) return [this.group, ...groups];
+
+      return groups;
+    },
+  },
+
+  watch: {
+    async compValue(newVal) {
+      if (newVal) {
+        await this.checkAndLoadGroup();
+      } else {
+        this.group = null;
+      }
+    },
   },
 
   methods: {
-    searchGroups: throttle(async function ({ value = '' } = {}) {
+    searchGroups: throttle(async function ({ value = null } = {}) {
       try {
         this.groups = await searchGroups(this.$axios, value);
       } catch (err) {}
     }, 300),
-  },
 
-  async mounted() {
-    await this.searchGroups();
+    async checkAndLoadGroup() {
+      const loaded = this.groups
+        .find(({ id }) => id === this.compValue);
 
-    if (this.compValue) {
-      const isLoaded = this.groups.some(({ id }) => id === this.compValue);
-
-      if (!isLoaded) {
+      if (loaded) {
+        this.group = loaded;
+      } else {
         try {
           const { id, name } = await getGroup(this.$axios, this.compValue);
 
-          this.groups.unshift({ id, name });
+          this.group = { id, name };
         } catch (err) {}
       }
-    }
+    },
+  },
+
+  async created() {
+    await this.searchGroups();
+    await this.checkAndLoadGroup();
   },
 };

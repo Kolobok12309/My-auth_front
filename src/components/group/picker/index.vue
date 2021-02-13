@@ -10,7 +10,7 @@
     emptyFilterMessage="Отделы не найдены"
     filter
     showClear
-    :options="groups"
+    :options="allGroups"
     @filter="searchGroups"
   />
 </template>
