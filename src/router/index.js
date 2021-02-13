@@ -28,7 +28,16 @@ const routes = [
   {
     path: '/task/:id(\\d+)',
     name: 'Task',
-    component: () => import('@/pages/task'),
+    component: () => import(/* webpackChunkName: "tasks" */ '@/pages/task'),
+    meta: {
+      needAuth: true,
+    },
+    props: ({ params }) => ({ id: Number(params.id) }),
+  },
+  {
+    path: '/task/:id(\\d+)/edit',
+    name: 'TaskEdit',
+    component: () => import(/* webpackChunkName: "tasks" */ '@/pages/task/edit'),
     meta: {
       needAuth: true,
     },
@@ -63,7 +72,7 @@ export default (store) => {
     routes,
   });
 
-  router.beforeEach((to, from, next) => {
+  router.beforeEach(async (to, from, next) => {
     const { id, accessToken } = store.state.user;
     const isGuest = accessToken === null;
 
