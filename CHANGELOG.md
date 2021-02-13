@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.6...v0.1.7) (2021-02-13)
+
+
+### Features
+
+* :lipstick: Localize PrimeVue ([6d07900](https://github.com/Kolobok12309/My-auth_front/commit/6d07900baeefc934ebc01530f412b151e5717eb0))
+* :sparkles: Add FileUploader and update FileView ([a23da05](https://github.com/Kolobok12309/My-auth_front/commit/a23da05d8b78941e932dd9693a06c1a49d352843))
+* :sparkles: Add group filter to UserPicker ([0bbfc17](https://github.com/Kolobok12309/My-auth_front/commit/0bbfc17e777abf2f23e040bf049661186ac4b423))
+* :sparkles: Add Task page and add DateView component ([05b2ddb](https://github.com/Kolobok12309/My-auth_front/commit/05b2ddb3c4731a1e66adcaa073db7fc178310b85))
+* :sparkles: Add TaskEditPage ([7dcba13](https://github.com/Kolobok12309/My-auth_front/commit/7dcba139dd06207ae603bb390b2a8c8b8e262b63))
+* :sparkles: Add TaskForm ([0c26346](https://github.com/Kolobok12309/My-auth_front/commit/0c26346dbe72a0146c51a1e727581adced32f4f2))
+* :sparkles: Add TaskNewPage ([c717524](https://github.com/Kolobok12309/My-auth_front/commit/c7175249e97412be127b42ac7cc6ec22bf2534b4))
+* **task:** :sparkles: Add status to TaskFilter ([2b533e0](https://github.com/Kolobok12309/My-auth_front/commit/2b533e0264ae404bc9632c821a7d1f3b6d94611a))
+
+
+### Bug Fixes
+
+* :bug: Fix null search of user/group in pickers ([14e6a74](https://github.com/Kolobok12309/My-auth_front/commit/14e6a7468bb8df845749efd626fce111a26e5125))
+* :bug: Fix preload in User/Group pickers ([37f9cb7](https://github.com/Kolobok12309/My-auth_front/commit/37f9cb7f51b2d7e2c48a76319b243c590d886b99))
+
 ### [0.1.6](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.5...v0.1.6) (2021-02-06)
 
 
