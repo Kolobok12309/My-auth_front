@@ -1,6 +1,6 @@
 import Tag from 'primevue/tag';
 
-import { statuses } from '../config';
+import { statuses, TODO } from '../config';
 
 export default {
   components: {
@@ -10,7 +10,7 @@ export default {
   props: {
     value: {
       type: Number,
-      default: 0,
+      default: TODO,
     },
   },
 

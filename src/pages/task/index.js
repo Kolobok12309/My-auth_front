@@ -1,5 +1,5 @@
 import flatry from 'flatry';
-import { mapState, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 import { axiosInstance } from '@/plugins/axios';
 import { getTask, updateTask } from '@/api/task';
@@ -7,6 +7,8 @@ import { getTask, updateTask } from '@/api/task';
 import components from './components';
 
 export default {
+  name: 'TaskPage',
+
   components,
 
   props: {

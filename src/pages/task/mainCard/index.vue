@@ -72,7 +72,7 @@
 
           <div class="task-main__files">
             <FileView
-              v-for="file in files"
+              v-for="file in task.files"
               :key="file.id"
               :file="file"
             />

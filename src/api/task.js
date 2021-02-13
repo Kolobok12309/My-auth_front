@@ -13,7 +13,7 @@ export const updateTask = ({ $patch }, id, body) =>
 export const deleteTask = ({ $delete }, id) =>
   $delete(`/task/${id}`);
 
-export const addFile = ({ $post }, files) => {
+export const addFiles = ({ $post }, files) => {
   const formData = new FormData();
 
   files.forEach((file) => formData.append('file', file));
