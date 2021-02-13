@@ -71,10 +71,10 @@
           <Divider />
 
           <div class="task-main__files">
-            <File
+            <FileView
               v-for="file in files"
               :key="file.id"
-              :name="file.name"
+              :file="file"
             />
           </div>
         </template>

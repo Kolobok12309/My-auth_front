@@ -7,7 +7,7 @@ import Button from 'primevue/button';
 import StatusView from '@/components/status/view';
 import StatusPicker from '@/components/status/picker';
 import SkeletonHelper from '@/components/skeleton-helper';
-import File from '@/components/file';
+import FileView from '@/components/file/view';
 import UserView from '@/components/user/view';
 import GroupView from '@/components/group/view';
 import DateView from '@/components/date';
@@ -21,7 +21,7 @@ export default {
   StatusView,
   StatusPicker,
   SkeletonHelper,
-  File,
+  FileView,
   UserView,
   GroupView,
   DateView,
