@@ -3,6 +3,7 @@
     ref="uploader"
     customUpload
     multiple
+    auto
     @uploader="uploader"
   >
     <template #empty>

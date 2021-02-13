@@ -13,6 +13,7 @@
         >
           <InputText
             v-model="form.title"
+            placeholder="Заголовок"
             id="title"
             type="text"
           />
@@ -45,6 +46,7 @@
             showTime
             showIcon
             showButtonBar
+            placeholder="Срок сдачи"
             id="deadline"
           />
         </SkeletonHelper>
@@ -94,6 +96,7 @@
             v-model="form.description"
             autoResize
             rows="4"
+            placeholder="Описание задачи"
             id="description"
           />
         </SkeletonHelper>
@@ -137,7 +140,7 @@
       :pending="pending"
       style="height: 2.25rem"
     >
-      <div class="p-grid p-flex-nowrap">
+      <div class="p-grid">
         <div class="p-col-fixed">
           <Button
             :label="btnText"
