@@ -1,34 +1,9 @@
 import { mapGetters } from 'vuex';
-import Card from 'primevue/card';
-import InputText from 'primevue/inputtext';
-import Dropdown from 'primevue/dropdown';
-import Button from 'primevue/button';
 
-import GroupPicker from '@/components/group/picker';
-
-const roles = [
-  {
-    id: 0,
-    label: 'Админ',
-  },
-  {
-    id: 1,
-    label: 'Директор',
-  },
-  {
-    id: 2,
-    label: 'Пользователь',
-  },
-];
+import components from './components';
 
 export default {
-  components: {
-    Card,
-    InputText,
-    GroupPicker,
-    Dropdown,
-    Button,
-  },
+  components,
 
   props: {
     user: {
@@ -57,8 +32,6 @@ export default {
 
   computed: {
     ...mapGetters('user', ['isAdmin']),
-
-    roles: () => roles,
 
     userIsAdmin() {
       return this.user.role === 0;

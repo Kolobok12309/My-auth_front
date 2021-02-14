@@ -2,17 +2,17 @@ import Card from 'primevue/card';
 import Divider from 'primevue/divider';
 import Menubar from 'primevue/menubar';
 
-import Role from '@/components/role';
+import RoleView from '@/components/role/view';
 import SkeletonHelper from '@/components/skeleton-helper';
 import SpinnerHelper from '@/components/spinner-helper';
-import Group from '@/components/group/view';
+import GroupView from '@/components/group/view';
 
 export default {
   Card,
   Divider,
   Menubar,
-  Role,
+  RoleView,
   SkeletonHelper,
   SpinnerHelper,
-  Group,
+  GroupView,
 };

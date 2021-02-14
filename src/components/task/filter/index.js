@@ -1,22 +1,11 @@
-import Card from 'primevue/card';
-import InputText from 'primevue/inputtext';
-import Button from 'primevue/button';
-
-import GroupPicker from '@/components/group/picker';
-import UserPicker from '@/components/user/picker';
-import StatusPicker from '@/components/status/picker';
-
 import mapSyncProps from '@/utils/map-sync-props';
 
+import components from './components';
+
 export default {
-  components: {
-    Card,
-    InputText,
-    Button,
-    GroupPicker,
-    UserPicker,
-    StatusPicker,
-  },
+  name: 'TaskFilter',
+
+  components,
 
   props: {
     pending: {

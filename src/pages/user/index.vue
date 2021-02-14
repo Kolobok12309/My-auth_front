@@ -27,14 +27,14 @@
             <template v-if="user.group">
               Отдел:
 
-              <Group :group="user.group" />
+              <GroupView :group="user.group" />
             </template>
           </SkeletonHelper>
 
           <Divider v-if="pending || user.group" />
 
           <SkeletonHelper :pending="pending">
-            <Role :value="user.role" />
+            <RoleView :value="user.role" />
           </SkeletonHelper>
         </template>
       </Card>

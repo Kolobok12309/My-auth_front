@@ -5,7 +5,7 @@
       :class="`pi-${role.icon}`"
     />
 
-    {{ role.name }}
+    {{ role.label }}
   </span>
 </template>
 

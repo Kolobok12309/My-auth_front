@@ -42,14 +42,9 @@
             </label>
 
             <div>
-              <Dropdown
+              <RolePicker
                 v-model="userData.role"
-                :options="roles"
                 :disabled="pending"
-                placeholder="Роль"
-                optionLabel="label"
-                optionValue="id"
-                dataKey="id"
                 inputId="role"
               />
             </div>
