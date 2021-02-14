@@ -34,5 +34,8 @@ export const getUser = ({ $get }, id) =>
 export const updateUser = ({ $patch }, id, body) =>
   $patch(`/user/${id}`, body);
 
+export const changePassword = ({ $patch }, id, password, oldPassword) =>
+  $patch(`/user/${id}/password`, { password, oldPassword });
+
 export const deleteUser = ({ $delete }, id) =>
   $delete(`/user/${id}`);

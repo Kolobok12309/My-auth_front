@@ -1,15 +1,17 @@
 import flatry from 'flatry';
 
 import {
-  getUserTokens, getTokens, revokeToken, updateUser,
+  getUserTokens, getTokens, revokeToken, updateUser, changePassword,
 } from '@/api/user';
 
 import SettingsForm from './settings-form';
+import PasswordBlock from './password-block';
 import TokensTable from './tokens-table';
 
 export default {
   components: {
     SettingsForm,
+    PasswordBlock,
     TokensTable,
   },
 
@@ -33,6 +35,8 @@ export default {
       tokensPending: true,
 
       settingsPending: false,
+
+      passwordPending: false,
     };
   },
 
@@ -110,6 +114,31 @@ export default {
       this.$emit('update');
 
       this.settingsPending = false;
+    },
+
+    async onPasswordUpdate({ password, oldPassword }) {
+      const { id } = this.user;
+
+      this.passwordPending = true;
+      const [err] = await flatry(changePassword(this.$axios, id, password, oldPassword));
+
+      if (err) {
+        this.$toast.add({
+          severity: 'error',
+          summary: err.serverError || 'Ошибка при изменении пароля',
+          life: 5000,
+        });
+        this.passwordPending = false;
+        return;
+      }
+
+      this.$toast.add({
+        severity: 'success',
+        summary: 'Пароль успешно изменен',
+        life: 5000,
+      });
+      this.passwordPending = false;
+      this.$refs.password.clear();
     },
   },
 

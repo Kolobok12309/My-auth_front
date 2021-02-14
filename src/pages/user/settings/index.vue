@@ -7,6 +7,13 @@
       @submit="onSettingsUpdate"
     />
 
+    <PasswordBlock
+      ref="password"
+      :pending="passwordPending"
+      class="p-mt-3"
+      @submit="onPasswordUpdate"
+    />
+
     <TokensTable
       :tokens="tokens"
       :pending="tokensPending"
