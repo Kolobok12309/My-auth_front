@@ -12,7 +12,7 @@ export default {
   computed: {
     ...mapState('user', ['id', 'groupId']),
 
-    ...mapGetters('user', ['isGuest', 'hasGroup']),
+    ...mapGetters('user', ['isGuest', 'hasGroup', 'isDirector', 'isAdmin']),
 
     navItems() {
       return [
@@ -34,6 +34,11 @@ export default {
           label: 'Новая задача',
           to: '/task/new',
           visible: () => !this.isGuest,
+        },
+        {
+          label: 'Новый отдел',
+          to: '/group/new',
+          visible: () => !this.isGuest && (this.isAdmin || this.isDirector),
         },
         {
           label: 'Войти',

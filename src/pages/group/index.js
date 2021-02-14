@@ -2,7 +2,7 @@ import flatry from 'flatry';
 import { mapGetters } from 'vuex';
 
 import { axiosInstance } from '@/plugins/axios';
-import { getGroup, updateGroup } from '@/api/group';
+import { getGroup } from '@/api/group';
 
 import components from './components';
 
@@ -22,11 +22,6 @@ export default {
     return {
       group: null, // Async
       pending: true,
-
-      isEdit: false,
-      form: {
-        name: '',
-      },
     };
   },
 
@@ -47,50 +42,19 @@ export default {
           icon: 'pi pi-users',
           to: `/group/${id}/users`,
         },
+        {
+          label: 'Настройки',
+          icon: 'pi pi-cog',
+          to: `/group/${id}/edit`,
+          visible: () => this.isAdmin || this.isDirector,
+        },
       ];
     },
   },
 
-  watch: {
-    group: {
-      handler() {
-        this.resetForm();
-        this.isEdit = false;
-      },
-      immediate: true,
-    },
-
-    isEdit(newVal) {
-      if (!newVal) {
-        this.resetForm();
-      }
-    },
-  },
-
   methods: {
-    toggleEdit() {
-      this.isEdit = !this.isEdit;
-    },
-
-    resetForm() {
-      this.form.name = this.group
-        ? this.group.name
-        : '';
-    },
-
-    async onSubmit() {
-      const [err, group] = await flatry(updateGroup(this.$axios, this.id, this.form));
-
-      if (err) {
-        this.$toast.add({
-          severity: 'error',
-          summary: err.serverError || 'Ошибка обновления информации об отделе',
-          life: 5000,
-        });
-        return;
-      }
-
-      this.group = group;
+    onUpdate(updatedGroup) {
+      this.group = updatedGroup;
     },
   },
 

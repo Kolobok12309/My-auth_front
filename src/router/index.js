@@ -73,6 +73,13 @@ const routes = [
     ],
   },
   {
+    path: '/group/new',
+    component: () => import(/* webpackChunkName: "group" */ '@/pages/group/new'),
+    meta: {
+      needAuth: true,
+    },
+  },
+  {
     path: '/group/:id(\\d+)',
     component: () => import(/* webpackChunkName: "group" */ '@/pages/group'),
     meta: {
@@ -90,6 +97,11 @@ const routes = [
         path: 'users',
         name: 'GroupUsers',
         component: () => import(/* webpackChunkName: "group" */ '@/pages/group/users'),
+      },
+      {
+        path: 'edit',
+        name: 'GroupEdit',
+        component: () => import(/* webpackChunkName: "group" */ '@/pages/group/edit'),
       },
     ],
   },

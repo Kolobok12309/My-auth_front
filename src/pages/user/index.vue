@@ -54,7 +54,6 @@
           <router-view
             :user="user"
             :isMe="isMe"
-            :pending="pending"
             @update="onUpdate"
             v-slot="{ Component }"
           >
