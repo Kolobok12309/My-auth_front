@@ -3,12 +3,42 @@
     <div class="p-col-12 p-md-4 p-xl-2 p-offset-0 p-xl-offset-2">
       <Card>
         <template #title>
-          Информация
+          <div class="p-d-flex p-ai-center">
+            <span class="p-mr-2">
+              Информация
+            </span>
+
+            <Button
+              v-if="isDirector || isAdmin"
+              icon="pi pi-cog"
+              class="p-button-secondary p-button-sm p-button-text p-button-rounded p-ml-auto"
+              @click="toggleEdit"
+            />
+          </div>
         </template>
 
         <template #content>
           <SkeletonHelper :pending="pending">
-            Название: {{ group.name }}
+            <form
+              v-show="isEdit"
+              @submit.prevent="onSubmit"
+            >
+              <div class="p-inputgroup">
+                <InputText
+                  v-model="form.name"
+                  placeholder="Название"
+                />
+
+                <Button
+                  icon="pi pi-search"
+                  type="submit"
+                />
+              </div>
+            </form>
+
+            <span v-show="!isEdit">
+              Название: {{ group.name }}
+            </span>
           </SkeletonHelper>
         </template>
       </Card>

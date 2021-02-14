@@ -1,7 +1,8 @@
 import flatry from 'flatry';
+import { mapGetters } from 'vuex';
 
 import { axiosInstance } from '@/plugins/axios';
-import { getGroup } from '@/api/group';
+import { getGroup, updateGroup } from '@/api/group';
 
 import components from './components';
 
@@ -21,10 +22,17 @@ export default {
     return {
       group: null, // Async
       pending: true,
+
+      isEdit: false,
+      form: {
+        name: '',
+      },
     };
   },
 
   computed: {
+    ...mapGetters('user', ['isDirector', 'isAdmin']),
+
     toolbarItems() {
       const { id } = this;
 
@@ -43,9 +51,35 @@ export default {
     },
   },
 
+  watch: {
+    group: {
+      handler() {
+        this.resetForm();
+        this.isEdit = false;
+      },
+      immediate: true,
+    },
+
+    isEdit(newVal) {
+      if (!newVal) {
+        this.resetForm();
+      }
+    },
+  },
+
   methods: {
-    async onUpdate() {
-      const [err, group] = await flatry(getGroup(axiosInstance, this.id));
+    toggleEdit() {
+      this.isEdit = !this.isEdit;
+    },
+
+    resetForm() {
+      this.form.name = this.group
+        ? this.group.name
+        : '';
+    },
+
+    async onSubmit() {
+      const [err, group] = await flatry(updateGroup(this.$axios, this.id, this.form));
 
       if (err) {
         this.$toast.add({
