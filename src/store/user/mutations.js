@@ -1,6 +1,7 @@
 export default {
-  setToken(state, token = null) {
-    state.accessToken = token;
+  setTokens(state, { accessToken = null, refreshToken = null } = {}) {
+    state.accessToken = accessToken;
+    state.refreshToken = refreshToken;
   },
 
   setUser(state, {

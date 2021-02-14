@@ -7,8 +7,8 @@ export const signUp = ({ $post }, body) =>
 export const signOut = ({ $post }) =>
   $post('/signOut');
 
-export const refreshToken = ({ $post }) =>
-  $post('/refresh');
+export const refreshToken = ({ $post }, token) =>
+  $post('/refresh', { refresh_token: token });
 
 export const getTokens = ({ $get }) =>
   $get('/tokens');

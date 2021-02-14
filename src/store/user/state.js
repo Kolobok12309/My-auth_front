@@ -6,4 +6,5 @@ export default () => ({
   role: null,
 
   accessToken: null,
+  refreshToken: null,
 });
