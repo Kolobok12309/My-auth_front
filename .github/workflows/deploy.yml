@@ -26,6 +26,7 @@ jobs:
       env:
         VUE_APP_API_URL: https://kolobok-auth-back.herokuapp.com
         VUE_APP_BASE_URL: /My-auth_front/
+        VUE_APP_HISTORY_MODE: hash
         PUBLIC_PATH: https://kolobok12309.github.io/My-auth_front/
 
     - name: Upload build artifact

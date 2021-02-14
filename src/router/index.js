@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 
 const routes = [
   {
@@ -74,9 +74,19 @@ const routes = [
   },
 ];
 
+const getHistory = (mode = 'hash') => {
+  switch (mode) {
+    case 'history':
+      return createWebHistory(process.env.VUE_APP_BASE_URL);
+    case 'hash':
+    default:
+      return createWebHashHistory(process.env.VUE_APP_BASE_URL);
+  }
+};
+
 export default (store) => {
   const router = createRouter({
-    history: createWebHistory(process.env.VUE_APP_BASE_URL),
+    history: getHistory(process.env.VUE_APP_HISTORY_MODE),
     routes,
   });
 
