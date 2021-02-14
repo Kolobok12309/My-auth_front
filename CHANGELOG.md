@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.9...v0.1.10) (2021-02-14)
+
+
+### Features
+
+* :sparkles: Add All(groups/users/tasks) pages ([69be086](https://github.com/Kolobok12309/My-auth_front/commit/69be08673ceee7d4538c6587eaf0122665b79fed))
+* :sparkles: Add ChangePasswordBlock to user settings ([74d6383](https://github.com/Kolobok12309/My-auth_front/commit/74d63837c8fdce196a3ce85bdee5cb4f9272cdcd))
+* :sparkles: Add Group Filter and Table ([563a205](https://github.com/Kolobok12309/My-auth_front/commit/563a2058636684bd09b6b131186fce9045003319))
+* :sparkles: Fix PasswordBlock for admins ([0934d39](https://github.com/Kolobok12309/My-auth_front/commit/0934d395b40af55c985a7954e5edcf271370fe40))
+
 ### [0.1.9](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.8...v0.1.9) (2021-02-14)
 
 
