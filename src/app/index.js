@@ -10,9 +10,9 @@ export default {
   },
 
   computed: {
-    ...mapState('user', ['id']),
+    ...mapState('user', ['id', 'groupId']),
 
-    ...mapGetters('user', ['isGuest']),
+    ...mapGetters('user', ['isGuest', 'hasGroup']),
 
     navItems() {
       return [
@@ -26,9 +26,9 @@ export default {
           visible: () => !this.isGuest,
         },
         {
-          label: 'Настройки',
-          to: `/user/${this.id}/settings`,
-          visible: () => !this.isGuest,
+          label: 'Мой отдел',
+          to: `/group/${this.groupId}/tasks`,
+          visible: () => !this.isGuest && this.hasGroup,
         },
         {
           label: 'Новая задача',
