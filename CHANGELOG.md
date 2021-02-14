@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.7...v0.1.8) (2021-02-14)
+
+
+### Features
+
+* :sparkles: Add refreshTokens logic ([ee57ece](https://github.com/Kolobok12309/My-auth_front/commit/ee57ece6c91fae8d3924ab542655596361e2ba52))
+* :zap: Replace Dropdown for signUp page ([ad74cdb](https://github.com/Kolobok12309/My-auth_front/commit/ad74cdbfb7fb74980eac367d7985e62427a5484c))
+
+
+### Bug Fixes
+
+* :ambulance: Fix signIn after signUp ([00979dc](https://github.com/Kolobok12309/My-auth_front/commit/00979dc29480db99561009a9a206b797922b116f))
+* :bug: Fix toasts in router hooks ([4da1be5](https://github.com/Kolobok12309/My-auth_front/commit/4da1be53ef6988acd35f3e1b3588e409e6809f92))
+
 ### [0.1.7](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.6...v0.1.7) (2021-02-13)
 
 
