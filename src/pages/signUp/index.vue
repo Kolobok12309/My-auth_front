@@ -34,13 +34,9 @@
         <div class="p-field">
           <label for="group">Группа</label>
 
-          <Dropdown
+          <GroupPicker
             v-model="form.groupId"
-            :options="groups"
-            :disabled="!groups.length"
-            optionLabel="title"
-            optionValue="id"
-            dataKey="id"
+            inputId="group"
             placeholder="Выберите группу (необязательно)"
           />
         </div>
