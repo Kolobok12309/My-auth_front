@@ -105,6 +105,30 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/all',
+    component: () => import(/* webpackChunkName: "all" */ '@/pages/all'),
+    meta: {
+      needAuth: true,
+    },
+    children: [
+      {
+        path: 'tasks',
+        name: 'AllTasks',
+        component: () => import(/* webpackChunkName: "all" */ '@/pages/all/tasks'),
+      },
+      {
+        path: 'groups',
+        name: 'AllGroups',
+        component: () => import(/* webpackChunkName: "all" */ '@/pages/all/groups'),
+      },
+      {
+        path: 'users',
+        name: 'AllUsers',
+        component: () => import(/* webpackChunkName: "all" */ '@/pages/all/users'),
+      },
+    ],
+  },
 ];
 
 const getHistory = (mode = 'hash') => {

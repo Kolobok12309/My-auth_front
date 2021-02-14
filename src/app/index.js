@@ -41,6 +41,11 @@ export default {
           visible: () => !this.isGuest && (this.isAdmin || this.isDirector),
         },
         {
+          label: 'Сущности',
+          to: '/all/tasks',
+          visible: () => !this.isGuest && (this.isAdmin || this.isDirector),
+        },
+        {
           label: 'Войти',
           to: '/signIn',
           visible: () => this.isGuest,
