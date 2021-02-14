@@ -59,12 +59,7 @@ export default {
     const [err, task] = await flatry(getTask(axiosInstance, id));
 
     if (err) {
-      this.$toast.add({
-        severity: 'error',
-        summary: err.serverError || 'Ошибка получения задачи',
-        life: 5000,
-      });
-
+      console.error(err);
       return next(false);
     }
 
@@ -86,12 +81,7 @@ export default {
     this.pending = false;
 
     if (err) {
-      this.$toast.add({
-        severity: 'error',
-        summary: err.serverError || 'Ошибка получения пользователя',
-        life: 5000,
-      });
-
+      console.error(err);
       next(false);
     } else {
       this.task = task;

@@ -77,12 +77,7 @@ export default {
     const [err, user] = await flatry(getUser(axiosInstance, id));
 
     if (err) {
-      this.$toast.add({
-        severity: 'error',
-        summary: err.serverError || 'Ошибка получения пользователя',
-        life: 5000,
-      });
-
+      console.error(err);
       return next(false);
     }
 
@@ -104,12 +99,7 @@ export default {
     this.pending = false;
 
     if (err) {
-      this.$toast.add({
-        severity: 'error',
-        summary: err.serverError || 'Ошибка получения пользователя',
-        life: 5000,
-      });
-
+      console.error(err);
       next(false);
     } else {
       this.user = user;

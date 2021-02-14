@@ -19,12 +19,7 @@ import axiosPlugin from './plugins/axios';
 const initApp = async () => {
   const app = createApp(App)
     .use(store)
-    .use(axiosPlugin);
-
-  await flatry(store.dispatch('init'));
-
-  return app
-    .use(getRouter(store))
+    .use(axiosPlugin)
     .use(PrimeVue, {
       ripple: true,
       locale: {
@@ -50,6 +45,13 @@ const initApp = async () => {
       },
     })
     .use(ToastService);
+
+  await flatry(store.dispatch('init'));
+
+  // Отдельно т.к. при инициализации роутера сразу вызываются хуки
+  // А информация о пользователе не успевает подгрузиться
+  return app
+    .use(getRouter(store));
 };
 
 initApp()

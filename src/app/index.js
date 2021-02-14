@@ -9,11 +9,6 @@ export default {
     Menubar,
   },
 
-  data() {
-    return {
-    };
-  },
-
   computed: {
     ...mapState('user', ['id']),
 
