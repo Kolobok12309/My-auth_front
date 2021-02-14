@@ -65,6 +65,10 @@ export default {
         this.user = null;
       }
     },
+
+    groupId() {
+      this.searchUsers();
+    },
   },
 
   methods: {
