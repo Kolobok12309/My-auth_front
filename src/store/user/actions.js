@@ -10,7 +10,7 @@ export default {
     const user = await signUp(this.$axios, body);
     const { accessToken, refreshToken } = await signIn(this.$axios, {
       login: body.email,
-      passowrd: body.password,
+      password: body.password,
     });
 
     commit('setTokens', { accessToken, refreshToken });
