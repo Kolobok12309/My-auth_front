@@ -7,7 +7,7 @@ import { getUser } from '@/api/user';
 import components from './components';
 
 export default {
-  name: 'GroupPage',
+  name: 'UserPage',
 
   components,
 

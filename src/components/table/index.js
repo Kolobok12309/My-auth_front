@@ -3,6 +3,8 @@ import Paginator from 'primevue/paginator';
 import Card from 'primevue/card';
 
 export default {
+  name: 'MyDataTable',
+
   components: {
     Card,
     DataTable,

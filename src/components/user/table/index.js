@@ -1,7 +1,7 @@
 import components from './components';
 
 export default {
-  name: 'TasksTable',
+  name: 'UsersTable',
 
   components,
 
@@ -11,7 +11,7 @@ export default {
       default: 'Задачи',
     },
 
-    tasks: {
+    users: {
       type: Array,
       default: () => [],
     },
@@ -38,8 +38,8 @@ export default {
   },
 
   methods: {
-    onRowSelect(task) {
-      this.$router.push(`/task/${task.id}`);
+    onRowSelect(user) {
+      this.$router.push(`/user/${user.id}/profile`);
     },
   },
 };

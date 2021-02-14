@@ -1,5 +1,4 @@
 import flatry from 'flatry';
-import { mapState, mapGetters } from 'vuex';
 
 import { axiosInstance } from '@/plugins/axios';
 import { getGroup } from '@/api/group';
@@ -7,6 +6,8 @@ import { getGroup } from '@/api/group';
 import components from './components';
 
 export default {
+  name: 'GroupPage',
+
   components,
 
   props: {
@@ -18,14 +19,12 @@ export default {
 
   data() {
     return {
-      user: null, // Async
+      group: null, // Async
       pending: true,
     };
   },
 
   computed: {
-    ...mapGetters('user', ['isAdmin']),
-
     toolbarItems() {
       const { id } = this;
 
