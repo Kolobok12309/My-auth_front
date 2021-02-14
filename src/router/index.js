@@ -72,6 +72,27 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/group/:id(\\d+)',
+    component: () => import(/* webpackChunkName: "group" */ '@/pages/group'),
+    meta: {
+      needAuth: true,
+    },
+    props: ({ params }) => ({ id: Number(params.id) }),
+    children: [
+      {
+        path: 'tasks',
+        alias: '',
+        name: 'GroupTasks',
+        component: () => import(/* webpackChunkName: "group" */ '@/pages/group/tasks'),
+      },
+      {
+        path: 'users',
+        name: 'GroupUsers',
+        component: () => import(/* webpackChunkName: "group" */ '@/pages/group/users'),
+      },
+    ],
+  },
 ];
 
 const getHistory = (mode = 'hash') => {

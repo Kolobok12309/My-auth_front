@@ -2,13 +2,11 @@ import flatry from 'flatry';
 import { mapState, mapGetters } from 'vuex';
 
 import { axiosInstance } from '@/plugins/axios';
-import { getUser } from '@/api/user';
+import { getGroup } from '@/api/group';
 
 import components from './components';
 
 export default {
-  name: 'GroupPage',
-
   components,
 
   props: {
@@ -26,30 +24,21 @@ export default {
   },
 
   computed: {
-    ...mapState('user', {
-      myId: 'id',
-    }),
-
     ...mapGetters('user', ['isAdmin']),
-
-    isMe() {
-      return this.id === this.myId;
-    },
 
     toolbarItems() {
       const { id } = this;
 
       return [
         {
-          label: 'Профиль',
-          icon: 'pi pi-user',
-          to: `/user/${id}/profile`,
+          label: 'Задачи',
+          icon: 'pi pi-list',
+          to: `/group/${id}/tasks`,
         },
         {
-          label: 'Настройки',
-          icon: 'pi pi-cog',
-          to: `/user/${id}/settings`,
-          visible: () => this.isMe || this.isAdmin,
+          label: 'Участники',
+          icon: 'pi pi-users',
+          to: `/group/${id}/users`,
         },
       ];
     },
@@ -57,26 +46,25 @@ export default {
 
   methods: {
     async onUpdate() {
-      const [err, user] = await flatry(getUser(axiosInstance, this.id));
+      const [err, group] = await flatry(getGroup(axiosInstance, this.id));
 
       if (err) {
         this.$toast.add({
           severity: 'error',
-          summary: err.serverError || 'Ошибка обновления информации о пользователе',
+          summary: err.serverError || 'Ошибка обновления информации об отделе',
           life: 5000,
         });
         return;
       }
 
-      this.user = user;
-      if (this.isMe) this.$store.commit('user/setUser', user);
+      this.group = group;
     },
   },
 
   async beforeRouteEnter(to, from, next) {
     const { id } = to.params;
 
-    const [err, user] = await flatry(getUser(axiosInstance, id));
+    const [err, group] = await flatry(getGroup(axiosInstance, id));
 
     if (err) {
       console.error(err);
@@ -85,7 +73,7 @@ export default {
 
     next((vm) => {
       // eslint-disable-next-line no-param-reassign
-      vm.user = user;
+      vm.group = group;
       // eslint-disable-next-line no-param-reassign
       vm.pending = false;
     });
@@ -97,14 +85,14 @@ export default {
     if (id === from.params.id) return next();
 
     this.pending = true;
-    const [err, user] = await flatry(getUser(axiosInstance, id));
+    const [err, group] = await flatry(getGroup(axiosInstance, id));
     this.pending = false;
 
     if (err) {
       console.error(err);
       next(false);
     } else {
-      this.user = user;
+      this.group = group;
       next();
     }
   },

@@ -15,7 +15,7 @@
               <i class="pi pi-search" />
 
               <InputText
-                v-model="compText"
+                v-model="compTitle"
                 :disabled="pending"
                 type="text"
                 placeholder="Заголовок"
@@ -47,6 +47,7 @@
           >
             <UserPicker
               v-model="compUserId"
+              :groupId="compGroupId"
               :disabled="pending"
             />
           </div>

@@ -35,7 +35,7 @@ export default {
     },
 
     // Filter
-    text: {
+    title: {
       type: String,
       default: '',
     },
@@ -56,10 +56,10 @@ export default {
     },
   },
 
-  emits: ['submit', 'update:text', 'update:status', 'update:userId', 'update:groupId'],
+  emits: ['submit', 'update:title', 'update:status', 'update:userId', 'update:groupId'],
 
   computed: {
-    ...mapSyncProps(['text', 'status', 'userId', 'groupId']),
+    ...mapSyncProps(['title', 'status', 'userId', 'groupId']),
   },
 
   methods: {

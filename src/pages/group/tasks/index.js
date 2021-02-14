@@ -6,19 +6,16 @@ import TaskTable from '@/components/task/table';
 import { getTasks } from '@/api/task';
 
 export default {
+  name: 'GroupTasksPage',
+
   components: {
     TaskFilter,
     TaskTable,
   },
 
   props: {
-    user: {
+    group: {
       type: Object,
-      required: true,
-    },
-
-    isMe: {
-      type: Boolean,
       required: true,
     },
   },
@@ -39,25 +36,13 @@ export default {
     };
   },
 
-  computed: {
-    tableTitle() {
-      return this.isMe
-        ? 'Мои задачи'
-        : 'Задачи';
-    },
-
-    hasGroup() {
-      return this.user.groupId !== null;
-    },
-  },
-
   watch: {
-    user: {
+    group: {
       async handler(newVal) {
-        const { id, groupId } = newVal;
+        const { id } = newVal;
 
-        this.filter.userId = id;
-        if (groupId) this.filter.groupId = groupId;
+        this.filter.groupId = id;
+        this.filter.userId = null;
 
         await this.loadTasks();
       },

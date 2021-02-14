@@ -1,17 +1,17 @@
 <template>
-  <div class="profile">
+  <div>
     <TaskFilter
-      :pending="pending"
       v-model:title="filter.title"
       v-model:status="filter.status"
-      v-model:groupId="filter.groupId"
-      :hideGroup="hasGroup"
-      hideUser
+      v-model:userId="filter.userId"
+      :pending="pending"
+      :groupId="filter.groupId"
+      hideGroup
       @submit="onFilter"
     />
 
     <TaskTable
-      :title="tableTitle"
+      title="Задачи отдела"
       :tasks="tasks"
       :pending="pending"
       :page="meta && meta.page"
