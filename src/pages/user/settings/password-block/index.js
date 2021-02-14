@@ -12,6 +12,11 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    isMe: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   emits: ['submit'],
@@ -30,9 +35,12 @@ export default {
     },
 
     isFormValid() {
-      return this.isPasswordEquals
-        && this.password.length >= PASS_MIN_LENGTH
-        && this.oldPassword;
+      return this.isMe
+        ? this.isPasswordEquals
+          && this.password.length >= PASS_MIN_LENGTH
+          && this.oldPassword
+        : this.isPasswordEquals
+        && this.password.length >= PASS_MIN_LENGTH;
     },
   },
 
@@ -47,7 +55,7 @@ export default {
       if (!this.isFormValid) {
         let errorText = 'Ошибка в введенных данных';
 
-        if (!this.oldPassword) {
+        if (this.isMe && !this.oldPassword) {
           errorText = 'Введите старый пароль';
         } else if (!this.password) {
           errorText = 'Введите новый пароль';
@@ -65,9 +73,13 @@ export default {
         return;
       }
 
-      const { password, oldPassword } = this;
+      const payload = {
+        password: this.password,
+      };
 
-      this.$emit('submit', { password, oldPassword });
+      if (this.isMe) payload.oldPassword = this.oldPassword;
+
+      this.$emit('submit', payload);
     },
   },
 };

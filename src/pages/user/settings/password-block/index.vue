@@ -7,7 +7,10 @@
     <template #content>
       <form @submit.prevent="onSubmit">
         <div class="p-fluid p-formgrid p-grid">
-          <div class="p-field p-col-12 p-sm-6 p-lg-4">
+          <div
+            v-if="isMe"
+            class="p-field p-col-12 p-sm-6 p-lg-4"
+          >
             <label for="oldPassword">
               Старый пароль
             </label>

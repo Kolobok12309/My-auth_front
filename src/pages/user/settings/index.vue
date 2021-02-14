@@ -10,6 +10,7 @@
     <PasswordBlock
       ref="password"
       :pending="passwordPending"
+      :isMe="isMe"
       class="p-mt-3"
       @submit="onPasswordUpdate"
     />
