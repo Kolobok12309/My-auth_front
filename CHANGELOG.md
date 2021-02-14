@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.8...v0.1.9) (2021-02-14)
+
+
+### Features
+
+* :sparkles: Add Create/EditGroupPage ([826d9f0](https://github.com/Kolobok12309/My-auth_front/commit/826d9f0661608fd39577b7b4b7e6e25e047daad6))
+* :sparkles: Add GroupEdit ([a7d4c74](https://github.com/Kolobok12309/My-auth_front/commit/a7d4c74dd409df53427ddeac778e946f8210473d))
+* :sparkles: Add GroupUsersPage ([50db9c1](https://github.com/Kolobok12309/My-auth_front/commit/50db9c1443094f835c52ec8696d3081312f73069))
+* :sparkles: Add RolePicker ([39721ee](https://github.com/Kolobok12309/My-auth_front/commit/39721ee04117b6f0733658edc8ba3eac3d9dc999))
+* :sparkles: Add UserFilter ([5b7cb99](https://github.com/Kolobok12309/My-auth_front/commit/5b7cb993aae2e6e0032cd3b61fee9184f4293e49))
+* Add GroupTasks page ([e3acaf7](https://github.com/Kolobok12309/My-auth_front/commit/e3acaf71ccaaa23812101b29691ff59098b1ddd5))
+* Update App header and add Group item ([57af587](https://github.com/Kolobok12309/My-auth_front/commit/57af58728bde09950021cbfccd1af9dd07a3a116))
+
 ### [0.1.8](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.7...v0.1.8) (2021-02-14)
 
 
