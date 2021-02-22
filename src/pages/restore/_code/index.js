@@ -41,7 +41,7 @@ export default {
       });
     }
     {
-      const [err, { id } = {}] = await this.loadUser();
+      const [err, { id } = {}] = await flatry(this.loadUser());
 
       if (err) {
         return this.$toast.add({

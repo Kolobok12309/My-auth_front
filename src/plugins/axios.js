@@ -70,6 +70,7 @@ class MyAxios {
     const config = error.config || {};
     const response = error.response || {};
     const data = response.data || {};
+    const isRefreshRequest = config.isRefresh;
     const { $store, $router } = this.app.config.globalProperties;
 
     if (typeof data.message === 'string') serverError = data.message;
@@ -80,7 +81,7 @@ class MyAxios {
       if ($store) {
         const { refreshToken } = $store.state.user;
 
-        if (!refreshToken || isRefreshTokenExpired(refreshToken)) {
+        if (isRefreshRequest || !refreshToken || isRefreshTokenExpired(refreshToken)) {
           $store.dispatch('user/setTokens');
           $store.commit('user/setUser');
         } else {

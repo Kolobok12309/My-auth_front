@@ -8,7 +8,7 @@ export const signOut = ({ $post }) =>
   $post('/signOut');
 
 export const refreshToken = ({ $post }, token) =>
-  $post('/refresh', { refresh_token: token });
+  $post('/refresh', { refresh_token: token }, { isRefresh: true });
 
 export const getTokens = ({ $get }) =>
   $get('/tokens');
@@ -41,7 +41,7 @@ export const deleteUser = ({ $delete }, id) =>
   $delete(`/user/${id}`);
 
 export const restoreStart = ({ $post }, body = {}) =>
-  $post('/user/restore/start', body);
+  $post('/restore/start', body);
 
 export const restoreEnd = ({ $post }, code) =>
-  $post('/user/restore/end', { code });
+  $post('/restore/end', { code });
