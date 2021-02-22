@@ -19,6 +19,7 @@ export default {
         {
           label: 'Главная',
           to: '/',
+          visible: () => this.isGuest,
         },
         {
           label: 'Профиль',
