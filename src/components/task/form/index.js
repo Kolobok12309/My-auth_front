@@ -44,7 +44,7 @@ export default {
         },
         description: {
           required: helpers.withMessage('Обязательное поле', required),
-          minLength: helpers.withMessage('Минимальная длина 20 символов', minLength(20)),
+          minLength: helpers.withMessage('Минимальная длина 5 символов', minLength(5)),
         },
         groupId: {
           required: helpers.withMessage('Обязательное поле', required),
