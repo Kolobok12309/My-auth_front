@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.10...v0.1.11) (2021-02-22)
+
+
+### Features
+
+* :sparkles: Small fixes and add validations to all forms ([61233c9](https://github.com/Kolobok12309/My-auth_front/commit/61233c92cb4743729bed30cecf9ab5349628a74b))
+
+
+### Bug Fixes
+
+* :sparkles: Change task-form description validator ([83216f3](https://github.com/Kolobok12309/My-auth_front/commit/83216f3e5712065872664313aa9f0eb3d853beb3))
+
 ### [0.1.10](https://github.com/Kolobok12309/My-auth_front/compare/v0.1.9...v0.1.10) (2021-02-14)
 
 
