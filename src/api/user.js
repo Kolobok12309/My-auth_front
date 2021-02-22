@@ -39,3 +39,9 @@ export const changePassword = ({ $patch }, id, password, oldPassword) =>
 
 export const deleteUser = ({ $delete }, id) =>
   $delete(`/user/${id}`);
+
+export const restoreStart = ({ $post }, body = {}) =>
+  $post('/user/restore/start', body);
+
+export const restoreEnd = ({ $post }, code) =>
+  $post('/user/restore/end', { code });

@@ -26,6 +26,22 @@ const routes = [
     },
   },
   {
+    path: '/restore',
+    name: 'Restore',
+    component: () => import(/* webpackChunkName: "guest" */ '@/pages/restore'),
+    meta: {
+      needAuth: false,
+    },
+  },
+  {
+    path: '/restore/:code',
+    name: 'RestoreEnd',
+    component: () => import(/* webpackChunkName: "guest" */ '@/pages/restore/_code'),
+    meta: {
+      needAuth: false,
+    },
+  },
+  {
     path: '/task/new',
     name: 'TaskCreate',
     component: () => import(/* webpackChunkName: "tasks" */ '@/pages/task/new'),

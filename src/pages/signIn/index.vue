@@ -27,8 +27,14 @@
             v-model="password"
             id="password"
             type="password"
-            placeholder="password"
+            placeholder="Пароль"
           />
+        </div>
+
+        <div class="p-my-3">
+          <RouterLink to="/restore">
+            Восстановить пароль?
+          </RouterLink>
         </div>
 
         <div class="p-grid">
