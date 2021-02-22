@@ -16,7 +16,17 @@
             placeholder="Заголовок"
             id="title"
             type="text"
+            :class="{
+              'p-invalid': v$.form.title.$error
+            }"
           />
+
+          <small
+            v-if="v$.form.title.$error"
+            class="p-error"
+          >
+            {{ v$.form.title.$errors[0].$message }}
+          </small>
         </SkeletonHelper>
       </div>
 
@@ -63,8 +73,18 @@
             v-model="form.groupId"
             :showClear="false"
             inputId="group"
+            :class="{
+              'p-invalid': v$.form.groupId.$error
+            }"
             @update:modelValue="form.userId = null"
           />
+
+          <small
+            v-if="v$.form.groupId.$error"
+            class="p-error"
+          >
+            {{ v$.form.groupId.$errors[0].$message }}
+          </small>
         </SkeletonHelper>
       </div>
 
@@ -98,7 +118,17 @@
             rows="4"
             placeholder="Описание задачи"
             id="description"
+            :class="{
+              'p-invalid': v$.form.description.$error
+            }"
           />
+
+          <small
+            v-if="v$.form.description.$error"
+            class="p-error"
+          >
+            {{ v$.form.description.$errors[0].$message }}
+          </small>
         </SkeletonHelper>
       </div>
 

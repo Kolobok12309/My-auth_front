@@ -33,7 +33,7 @@ export default {
         {
           label: 'Новая задача',
           to: '/task/new',
-          visible: () => !this.isGuest,
+          visible: () => !this.isGuest && (this.isAdmin || this.isDirector),
         },
         {
           label: 'Новый отдел',

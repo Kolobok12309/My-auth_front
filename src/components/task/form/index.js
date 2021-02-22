@@ -1,6 +1,8 @@
 import defaults from 'lodash/defaults';
 import cloneDeep from 'lodash/cloneDeep';
 import pick from 'lodash/pick';
+import { required, minLength, helpers } from '@vuelidate/validators';
+import { useVuelidate } from '@vuelidate/core';
 
 import { defaultForm } from './config';
 import components from './components';
@@ -27,7 +29,27 @@ export default {
   data() {
     return {
       form: defaultForm(),
-      hasAttempt: false,
+    };
+  },
+
+  // Validations
+  setup: () => ({ v$: useVuelidate() }),
+
+  validations() {
+    return {
+      form: {
+        title: {
+          required: helpers.withMessage('Обязательное поле', required),
+          minLength: helpers.withMessage('Минимальная длина 5 символов', minLength(5)),
+        },
+        description: {
+          required: helpers.withMessage('Обязательное поле', required),
+          minLength: helpers.withMessage('Минимальная длина 20 символов', minLength(20)),
+        },
+        groupId: {
+          required: helpers.withMessage('Обязательное поле', required),
+        },
+      },
     };
   },
 
@@ -40,11 +62,6 @@ export default {
       return this.isEdit
         ? 'Сохранить'
         : 'Создать';
-    },
-
-    isFormValid() {
-      // TODO Add validators
-      return true;
     },
   },
 
@@ -68,11 +85,11 @@ export default {
       }
     },
 
-    onSubmit() {
-      if (!this.isFormValid) {
-        this.hasAttempt = true;
-        return;
-      }
+    async onSubmit() {
+      const isFormValid = await this.v$.$validate();
+
+      if (!isFormValid) return;
+      this.v$.$reset();
 
       this.$emit('submit', this.getFormattedForm());
     },

@@ -1,3 +1,8 @@
+import {
+  required, minLength, sameAs, helpers,
+} from '@vuelidate/validators';
+import { useVuelidate } from '@vuelidate/core';
+
 import components from './components';
 
 const PASS_MIN_LENGTH = 10;
@@ -29,19 +34,27 @@ export default {
     };
   },
 
-  computed: {
-    isPasswordEquals() {
-      return this.password === this.confirmPassword;
-    },
+  // Validations
+  setup: () => ({ v$: useVuelidate() }),
 
-    isFormValid() {
-      return this.isMe
-        ? this.isPasswordEquals
-          && this.password.length >= PASS_MIN_LENGTH
-          && this.oldPassword
-        : this.isPasswordEquals
-        && this.password.length >= PASS_MIN_LENGTH;
-    },
+  validations() {
+    return {
+      oldPassword: this.isMe
+        ? {
+          required: helpers.withMessage('Обязательное поле', required),
+          minLength: helpers.withMessage(`Минимальная длина ${PASS_MIN_LENGTH} символов`, minLength(PASS_MIN_LENGTH)),
+        } : {},
+      password: {
+        required: helpers.withMessage('Обязательное поле', required),
+        minLength: helpers.withMessage(`Минимальная длина ${PASS_MIN_LENGTH} символов`, minLength(PASS_MIN_LENGTH)),
+        sameAs: helpers.withMessage('Пароли не совпадают', sameAs(this.confirmPassword)),
+      },
+      confirmPassword: {
+        required: helpers.withMessage('Обязательное поле', required),
+        minLength: helpers.withMessage(`Минимальная длина ${PASS_MIN_LENGTH} символов`, minLength(PASS_MIN_LENGTH)),
+        sameAs: helpers.withMessage('Пароли не совпадают', sameAs(this.password)),
+      },
+    };
   },
 
   methods: {
@@ -51,27 +64,11 @@ export default {
       this.confirmPassword = '';
     },
 
-    onSubmit() {
-      if (!this.isFormValid) {
-        let errorText = 'Ошибка в введенных данных';
+    async onSubmit() {
+      const isFormValid = await this.v$.$validate();
 
-        if (this.isMe && !this.oldPassword) {
-          errorText = 'Введите старый пароль';
-        } else if (!this.password) {
-          errorText = 'Введите новый пароль';
-        } else if (!this.isPasswordEquals) {
-          errorText = 'Новый пароль не совпадает с подтверждением';
-        } else if (this.password.length < PASS_MIN_LENGTH) {
-          errorText = `Минимальная длина пароля ${PASS_MIN_LENGTH} символов`;
-        }
-
-        this.$toast.add({
-          severity: 'error',
-          summary: errorText,
-          life: 5000,
-        });
-        return;
-      }
+      if (!isFormValid) return;
+      this.v$.$reset();
 
       const payload = {
         password: this.password,

@@ -5,10 +5,7 @@
     </template>
 
     <template #content>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Inventore sed consequuntur error repudiandae
-      numquam deserunt quisquam repellat libero asperiores earum nam nobis,
-      culpa ratione quam perferendis esse, cupiditate neque quas!
+      Подсистема оповещения (напоминания) о текущих задачах в автоматизированной системе планирования и контроля исполнения плановых и оперативных производственных задач предприятия.
     </template>
   </Card>
 </template>

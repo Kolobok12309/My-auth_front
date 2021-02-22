@@ -24,7 +24,17 @@
                 id="oldPassword"
                 :feedback="false"
                 toggleMask
+                :class="{
+                  'p-invalid': v$.oldPassword.$error
+                }"
               />
+
+              <small
+                v-if="v$.oldPassword.$error"
+                class="p-error"
+              >
+                {{ v$.oldPassword.$errors[0].$message }}
+              </small>
             </SkeletonHelper>
           </div>
 
@@ -42,7 +52,17 @@
                 id="password"
                 :feedback="false"
                 toggleMask
+                :class="{
+                  'p-invalid': v$.password.$error
+                }"
               />
+
+              <small
+                v-if="v$.password.$error"
+                class="p-error"
+              >
+                {{ v$.password.$errors[0].$message }}
+              </small>
             </SkeletonHelper>
           </div>
 
@@ -60,7 +80,17 @@
                 id="confirmPassword"
                 :feedback="false"
                 toggleMask
+                :class="{
+                  'p-invalid': v$.confirmPassword.$error
+                }"
               />
+
+              <small
+                v-if="v$.confirmPassword.$error"
+                class="p-error"
+              >
+                {{ v$.confirmPassword.$errors[0].$message }}
+              </small>
             </SkeletonHelper>
           </div>
         </div>

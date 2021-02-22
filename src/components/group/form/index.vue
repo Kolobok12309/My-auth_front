@@ -16,7 +16,17 @@
             placeholder="Название отдела"
             id="name"
             type="text"
+            :class="{
+              'p-invalid': v$.form.name.$error
+            }"
           />
+
+          <small
+            v-if="v$.form.name.$error"
+            class="p-error"
+          >
+            {{ v$.form.name.$errors[0].$message }}
+          </small>
         </SkeletonHelper>
       </div>
     </div>

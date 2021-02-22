@@ -11,7 +11,10 @@
           </span>
 
           <div class="p-ml-sm-auto p-mt-2 p-mt-sm-0 p-d-flex p-ai-center">
-            <Inplace closable>
+            <Inplace
+              v-if="canEditStatus"
+              closable
+            >
               <template #display>
                 <StatusView :value="task.status" />
               </template>
@@ -23,6 +26,11 @@
                 />
               </template>
             </Inplace>
+
+            <StatusView
+              v-else
+              :value="task.status"
+            />
 
             <RouterLink
               v-if="isDirector || isAdmin"
