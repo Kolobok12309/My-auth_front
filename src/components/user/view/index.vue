@@ -7,7 +7,7 @@
   </RouterLink>
 
   <span v-else>
-    Удалён
+    -
   </span>
 </template>
 
